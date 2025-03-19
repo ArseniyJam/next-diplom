@@ -3,6 +3,7 @@ import { ProdCardInterface } from "@/lib/interfaces";
 import Image from "next/image";
 import RatingStars from "@/components/ratingStars";
 import Price from "@/components/price";
+import Link from "next/link";
 
 function ProdCard({
    url,
@@ -12,7 +13,10 @@ function ProdCard({
    title,
 }: ProdCardInterface) {
    return (
-      <div className={`flex flex-col gap-1 lg:gap-2 shrink-0 `}>
+      <Link
+         href={`/shop/futureCategory/futureId`}
+         className={`flex flex-col gap-1 lg:gap-2 shrink-0 `}
+      >
          <Image
             src={url}
             alt={title}
@@ -27,7 +31,7 @@ function ProdCard({
          </div>
          <RatingStars rating={rating} />
          <Price price={price} sale={sale} />
-      </div>
+      </Link>
    );
 }
 

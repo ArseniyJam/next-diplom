@@ -80,7 +80,7 @@ h2 {
 h3 {
   @apply text-[32px] lg:text-[40px];
 }
-h4 {
+h4,.h4 {
   @apply text-[24px] lg:text-[36px];
 }
 h4.satoshi {

@@ -6,6 +6,17 @@ export interface ProdCardInterface {
    sale?: number | null;
 }
 
+export interface OneProductInterface {
+   url: string[];
+   title: string;
+   rating: number;
+   price: number;
+   color: string[];
+   size: string[];
+   description: string;
+   sale?: number | null;
+}
+
 export interface CommentInterface {
    rating: number;
    userName: string;

@@ -1,4 +1,8 @@
-import { ProdCardInterface, CommentInterface } from "@/lib/interfaces";
+import {
+   ProdCardInterface,
+   CommentInterface,
+   OneProductInterface,
+} from "@/lib/interfaces";
 
 export const products1: ProdCardInterface[] = [
    {
@@ -56,6 +60,22 @@ export const products2: ProdCardInterface[] = [
       price: 210,
    },
 ];
+
+export const oneProduct: OneProductInterface = {
+   url: [
+      "/Shop/Product/image1.png",
+      "/Shop/Product/image2.png",
+      "/Shop/Product/image3.png",
+   ],
+   sale: 40,
+   size: ["sm", "lg"],
+   color: ["green"],
+   title: "One Life Graphic T-shirt",
+   description:
+      "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+   rating: 4.5,
+   price: 300,
+};
 
 export const comments: CommentInterface[] = [
    {
