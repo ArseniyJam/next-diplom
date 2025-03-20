@@ -69,7 +69,7 @@ export const oneProduct: OneProductInterface = {
    ],
    sale: 40,
    size: ["sm", "lg"],
-   color: ["green"],
+   color: ["green", "dark"],
    title: "One Life Graphic T-shirt",
    description:
       "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",

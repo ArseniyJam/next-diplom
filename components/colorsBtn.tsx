@@ -10,7 +10,9 @@ function ColorsBtn({ color }: { color: string }) {
          className={`h-9 w-9 rounded-full ${color === "dark" || color === "white" ? `bg-${color} border` : `bg-${color}-500`}  flex items-center justify-center`}
       >
          <input
-            onChange={() => setChecked(!checked)}
+            onChange={() => {
+               setChecked(!checked);
+            }}
             type="checkbox"
             className={`hidden`}
             name="color"

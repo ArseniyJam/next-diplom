@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function SizeBtn({ size }: { size: string }) {
    const [checked, setChecked] = React.useState<boolean>(false);
@@ -7,7 +7,7 @@ function SizeBtn({ size }: { size: string }) {
       <label htmlFor={size}>
          <input
             onChange={() => setChecked(!checked)}
-            type={`checkbox`}
+            type="checkbox"
             id={size}
             value={size}
             name={`size`}
