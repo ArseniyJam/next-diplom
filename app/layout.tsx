@@ -15,8 +15,8 @@ export default function RootLayout({
 }>) {
    return (
       <html lang="en">
-         <body className={` text-dark bg-white transition-all`}>
-            <div className={`px-4 lg:px-[100px]`}>
+         <body className={`text-dark bg-white `}>
+            <div className={`px-4 xl:px-[100px]`}>
                <Header />
                <div className={``}>{children}</div>
                <Footer />

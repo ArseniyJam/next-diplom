@@ -1,7 +1,15 @@
 import React from "react";
 import { Star, StarHalf } from "lucide-react";
 
-function RatingStars({ rating }: { rating: number }) {
+function RatingStars({
+   rating,
+   starSize = "h-5 lg:h-7",
+   ratingSize = "text-xs lg:text-sm",
+}: {
+   rating: number;
+   starSize?: string;
+   ratingSize?: string;
+}) {
    let arr: any = Array.from({
       length: rating % 1 < 0.75 ? Math.floor(rating) : Math.ceil(rating),
    }).fill(0);
@@ -10,13 +18,13 @@ function RatingStars({ rating }: { rating: number }) {
       <div className={`flex text-[#FFC633] items-center lg:gap-1`}>
          {arr.map((n: number, index: number) => (
             <div key={index}>
-               <Star className={`h-5 lg:h-7`} />
+               <Star className={`${starSize}`} />
             </div>
          ))}
          {rating % 1 >= 0.25 && rating % 1 < 0.75 && (
-            <StarHalf className={`h-5 lg:h-7`} />
+            <StarHalf className={`${starSize}`} />
          )}
-         <span className={`text-dark text-xs lg:text-sm`}>{rating}/5</span>
+         <span className={`text-dark ${ratingSize}`}>{rating}/5</span>
       </div>
    );
 }

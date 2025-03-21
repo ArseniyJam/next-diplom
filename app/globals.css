@@ -228,12 +228,3 @@ input {
 
 }
 
-/*Страница товара*/
-.prodPage.colors {
-  input[type="radio"]:checked + .check {
-    @apply block
-  }
-}
-input[type="radio"]:checked + label {
-  @apply bg-dark text-white
-}

@@ -23,7 +23,7 @@ function Price({
                   {`$` + price}
                </span>
                <span
-                  className={`text-[#FF3333] text-[10px] ${badgeClasses} py-1 px-2 bg-[#FF3333]/10 rounded-full`}
+                  className={` text-[#FF3333] text-[10px] ${badgeClasses} py-1 px-2 bg-[#FF3333]/10 rounded-full`}
                >
                   {`-` + sale + "%"}
                </span>
