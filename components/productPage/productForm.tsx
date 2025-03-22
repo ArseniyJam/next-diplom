@@ -74,7 +74,7 @@ function ProductForm({ prod }: { prod: OneProductInterface }) {
                   type={"button"}
                   onClick={() => setProdCount(prodCount - 1)}
                   className={
-                     prodCount === 1 ? "pointer-events-none text-dark/30" : ""
+                     prodCount <= 1 ? "pointer-events-none text-dark/30" : ""
                   }
                >
                   <Minus />

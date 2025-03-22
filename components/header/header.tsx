@@ -30,7 +30,7 @@ function Header() {
             </div>
          </div>
          <div
-            className={`py-5 lg:py-6  flex items-center  lg:gap-10 px-4 lg:px-[100px] `}
+            className={`py-5 lg:py-6  flex items-center  lg:gap-10 px-4 lg:px-[100px] 2xl:justify-evenly`}
          >
             <button
                className={`lg:hidden`}
@@ -46,18 +46,23 @@ function Header() {
             </Link>
             <HeaderNavbar />
             {openMenu && <HeaderMobileNavbar closeMenu={closeMenu} />}
+            <div></div>
             <div
-               className={`lg:flex lg:relative top-28 lg:top-0 lg:mx-0 left-1/2 -translate-x-1/2 lg:left-0 lg:-translate-x-0 w-[80vw]  ${searchActive ? "absolute" : "hidden"}`}
+               className={`lg:block top-28 lg:top-0 lg:mx-0 left-1/2 -translate-x-1/2 lg:left-0 lg:-translate-x-0 max-w-4xl w-[80vw] lg:w-full ${searchActive ? "absolute" : "hidden"}`}
             >
-               <input
-                  type="text"
-                  placeholder={`Search for products...`}
-                  className={`rounded-[62px] bg-gray grow px-4 py-3 ps-[52px] w-full border border-mutedGray shadow-md lg:shadow-none lg:border-none`}
-               />
+               <div className={`lg:relative `}>
+                  <input
+                     type="text"
+                     placeholder={`Search for products...`}
+                     className={`rounded-[62px] bg-gray grow px-4 py-3 ps-[52px]  border border-mutedGray shadow-md lg:shadow-none lg:border-none w-full`}
+                  />
 
-               <Search color={"#999999"} className={`absolute top-3 left-4 `} />
+                  <Search
+                     color={"#999999"}
+                     className={`absolute top-3 left-4 `}
+                  />
+               </div>
             </div>
-
             <div className={`flex gap-3 grow lg:grow-0 justify-end`}>
                <button
                   className={`lg:hidden`}

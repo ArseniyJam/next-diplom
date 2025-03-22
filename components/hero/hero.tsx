@@ -58,7 +58,7 @@ function Hero() {
                      width={390}
                      height={448}
                      alt={"a"}
-                     className={`xl:min-w-[580px] 2xl:min-w-[680px] xl:h-[calc(100vh-246px)]`}
+                     className={`xl:w-[40vw] 2xl:w-[40vw] 2xl:max-w-[1100px] xl:h-[calc(100vh-246px)]`}
                   />
                   <div
                      className={`absolute h-[76px] lg:h-[104px] aspect-square right-1 top-10`}

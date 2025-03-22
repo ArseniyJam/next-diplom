@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RatingStars from "@/components/ratingStars";
 import Price from "@/components/price";
 import { OneProductInterface } from "@/lib/interfaces";
@@ -8,6 +8,7 @@ import { OneProductInterface } from "@/lib/interfaces";
 import ProductForm from "@/components/productPage/productForm";
 import ProductsPreview from "@/components/productsPreview";
 import { products2 } from "@/data/data";
+import ProductInfo from "@/components/productPage/productInfo";
 
 function ProductPage({ prod }: { prod: OneProductInterface }) {
    const [activeUrl, setActiveUrl] = useState(prod.url[0]);
@@ -18,7 +19,9 @@ function ProductPage({ prod }: { prod: OneProductInterface }) {
 
    return (
       <div>
-         <div className={`pt-5 flex flex-col gap-5 lg:flex-row lg:gap-10 `}>
+         <div
+            className={`pt-5 flex flex-col gap-5 lg:flex-row lg:gap-10 2xl:justify-center`}
+         >
             <div className={`flex flex-col items-center gap-3 lg:flex-row`}>
                <div className={`lg:order-1 `}>
                   <Image
@@ -62,6 +65,9 @@ function ProductPage({ prod }: { prod: OneProductInterface }) {
                </div>
                <ProductForm prod={prod} />
             </div>
+         </div>
+         <div>
+            <ProductInfo />
          </div>
          <div className={`-mb-8 lg:-mb-16`}>
             <ProductsPreview
