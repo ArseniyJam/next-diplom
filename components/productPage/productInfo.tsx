@@ -15,6 +15,8 @@ import { SlidersHorizontal } from "lucide-react";
 import { comments } from "@/data/data";
 import Comment from "@/components/comment";
 import { useWindowSize } from "usehooks-ts";
+import CommentForm from "@/components/productPage/commentForm";
+import { getComments, postComment } from "@/data/comment";
 
 function RadioDropDown() {
    const [filter, setFilter] = useState("latest");
@@ -47,12 +49,13 @@ function RadioDropDown() {
 }
 
 function ProductInfo() {
+   const [showCommentForm, setShowCommentForm] = useState(false);
    const { width = 0 } = useWindowSize();
    const [pageSize, setPageSize] = useState(width < 1024 ? 3 : 6);
    const [addToPage, setAddToPage] = useState<number>(width < 1024 ? 3 : 6);
    useEffect(() => {
-      //    fetch csr
-   }, []);
+      getComments(pageSize);
+   }, [pageSize]);
 
    return (
       <div className={`mt-12`}>
@@ -82,9 +85,17 @@ function ProductInfo() {
                   <span>All Reviews(count)</span>
                   <div className={`flex items-center gap-2`}>
                      <RadioDropDown />
-                     <button className={`btn btn-sm`}>Add a review</button>
+                     <button
+                        className={`btn btn-sm`}
+                        onClick={() => setShowCommentForm(!showCommentForm)}
+                     >
+                        Add a review
+                     </button>
                   </div>
                </div>
+               {showCommentForm && (
+                  <CommentForm setShowCommentForm={setShowCommentForm} />
+               )}
                <div
                   className={`grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3`}
                >

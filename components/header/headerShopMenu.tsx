@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
@@ -7,9 +7,23 @@ import { ChevronDown } from "lucide-react";
 function HeaderShopMenu() {
    const styles = ["Casual", "Formal", "Party", "Gym"];
    const [opened, setOpened] = useState(false);
+   const menuRef = useRef<HTMLDivElement | null>(null);
 
+   const fn = (event: Event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+         setOpened(false);
+      }
+   };
+   useEffect(() => {
+      console.log(opened);
+      if (opened) {
+         document.addEventListener("click", fn);
+      } else {
+         document.removeEventListener("click", fn);
+      }
+   }, [opened]);
    return (
-      <div className={`relative`}>
+      <div className={`relative`} ref={menuRef}>
          <button
             className={`flex  items-center `}
             onClick={() => {
