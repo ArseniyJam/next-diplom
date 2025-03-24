@@ -23,3 +23,12 @@ export interface CommentInterface {
    content: string;
    date: string;
 }
+
+export interface ProdCartInterface {
+   image: string;
+   title: string;
+   count: string;
+   color: string;
+   size: string;
+   price: string;
+}

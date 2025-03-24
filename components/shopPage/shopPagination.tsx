@@ -22,7 +22,7 @@ export function ShopPagination({ pageCount }: { pageCount: number }) {
    };
 
    return (
-      <Pagination className={`mt-4`}>
+      <Pagination>
          <PaginationContent>
             <PaginationItem>
                <PaginationPrevious

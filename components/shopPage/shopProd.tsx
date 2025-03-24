@@ -36,9 +36,9 @@ function ShopProd({ category }: { category: string }) {
                   ))}
                </div>
                <div className={`divider`}></div>
+               <ShopPagination pageCount={pagesCount} />
             </div>
          </div>
-         <ShopPagination pageCount={pagesCount} />
       </div>
    );
 }

@@ -70,9 +70,9 @@ function Header() {
                >
                   <Search />
                </button>
-               <button>
+               <Link href={`/cart`}>
                   <ShoppingCart />
-               </button>
+               </Link>
                <button>
                   <UserCircle2 />
                </button>

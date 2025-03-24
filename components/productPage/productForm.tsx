@@ -1,19 +1,24 @@
 import React, { useActionState, useState } from "react";
 import { Check, Minus, Plus } from "lucide-react";
 import { OneProductInterface } from "@/lib/interfaces";
-import { addToCart } from "@/data/cart";
+import { cartForm } from "@/data/cart";
 
 function ProductForm({ prod }: { prod: OneProductInterface }) {
    const [prodCount, setProdCount] = useState(1);
    const [radioColor, setRadioColors] = useState("");
    const [radioSize, setRadioSize] = useState("");
 
-   const [state, formAction] = useActionState(addToCart, { data: null });
+   const [state, formAction] = useActionState(cartForm, { data: null });
    return (
       <form action={formAction} className={`lg:h-full flex flex-col`}>
          <input type="hidden" name="image" value={prod.url[0]} />
          <input type="hidden" name="title" value={prod.title} />
          <input type="hidden" name="count" value={prodCount} />
+         <input
+            type="hidden"
+            name="price"
+            value={prod.price * (1 - (prod.sale as number) / 100)}
+         />
 
          <div className={`divider my-5`}></div>
          <div className={`flex gap-2 lg:gap-4`}>
