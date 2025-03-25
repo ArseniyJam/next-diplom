@@ -139,6 +139,10 @@ input {
     @apply xl:w-[47vw]
   }
 }
+/*Card*/
+.card-item:last-of-type .divider {
+  @apply hidden;
+}
 /*---break---*/
 .dark {
   --background: oklch(0.145 0 0);
