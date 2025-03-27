@@ -3,8 +3,11 @@ import { ProdCartInterface } from "@/lib/interfaces";
 import { Card, CardContent } from "@/components/ui/card";
 import CartItem from "@/components/cart/cartItem";
 
-function Cart({ products }: { products: ProdCartInterface[] | null }) {
-   const sum = products?.reduce((acc, cur) => acc + +cur.price * +cur.count, 0);
+function Cart({ products }: { products: ProdCartInterface[] | [] }) {
+   const sum: number = products?.reduce(
+      (acc, cur) => acc + +cur.price * +cur.count,
+      0,
+   );
    const discount = 20;
    const delivery = 15;
    const discouted = sum - sum * (1 - discount / 100);
@@ -49,7 +52,7 @@ function Cart({ products }: { products: ProdCartInterface[] | null }) {
                   <div className={`flex items-center justify-between`}>
                      <div>Total</div>
                      <span className={`font-bold 00`}>
-                        ${sum - discouted - delivery}
+                        ${sum - discouted + delivery}
                      </span>
                   </div>
                   <button type="submit" className={`btn mt-2`}>

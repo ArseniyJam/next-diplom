@@ -32,3 +32,19 @@ export interface ProdCartInterface {
    size: string;
    price: string;
 }
+
+//Backend
+export interface RegisterProps {
+   username: string;
+   email: string;
+   password: string;
+}
+export interface LoginProps {
+   identifier: string;
+   password: string;
+}
+export interface StrapiErrorsProps {
+   message: string | null;
+   name: string;
+   status?: string | null;
+}

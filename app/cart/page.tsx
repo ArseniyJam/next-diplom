@@ -8,9 +8,7 @@ async function Page() {
    const cart = await getCart();
 
    return (
-      <div>
-         {cart && cart?.length > 0 ? <Cart products={cart} /> : <EmptyCart />}
-      </div>
+      <div>{cart.length > 0 ? <Cart products={cart} /> : <EmptyCart />}</div>
    );
 }
 

@@ -15,8 +15,8 @@ export async function cartForm(prevState: any, formData: FormData) {
       image: formData.get("image") as string,
       price: formData.get("price") as string,
    };
-   console.log(prod);
-   if (cart) {
+
+   if (cart?.length > 0) {
       // Проверка на уже добавленный товар в корзину
       if (
          cart.findIndex(
@@ -48,9 +48,9 @@ export async function cartForm(prevState: any, formData: FormData) {
 export async function getCart() {
    const cookieStore = await cookies();
 
-   const cookieCart: ProdCartInterface[] | null = cookieStore.get("cart")
+   const cookieCart: ProdCartInterface[] | [] = cookieStore.get("cart")
       ? JSON.parse(cookieStore.get("cart").value)
-      : null;
+      : [];
 
    return cookieCart;
 }

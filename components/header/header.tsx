@@ -1,12 +1,20 @@
 "use client";
 import Link from "next/link";
-import { AlignJustify, Search, ShoppingCart, UserCircle2 } from "lucide-react";
+import {
+   AlignJustify,
+   LogOut,
+   Search,
+   ShoppingCart,
+   UserCircle2,
+} from "lucide-react";
 import HeaderShopMenu from "@/components/header/headerShopMenu";
 import HeaderNavbar from "@/components/header/headerNavbar";
 import HeaderMobileNavbar from "@/components/header/headerMobileNavbar";
 import { useEffect, useState } from "react";
+import { ProdCartInterface } from "@/lib/interfaces";
+import { logoutAction } from "@/data/auth";
 
-function Header() {
+function Header({ cart, user }: { cart: ProdCartInterface[] | []; user: any }) {
    const [openMenu, setOpenMenu] = useState(false);
    const [searchActive, setSearchActive] = useState(false);
    const closeMenu = () => {
@@ -63,19 +71,48 @@ function Header() {
                   />
                </div>
             </div>
-            <div className={`flex gap-3 grow lg:grow-0 justify-end`}>
+            <div
+               className={`flex gap-3 lg:gap-5 grow lg:grow-0 justify-end items-center`}
+            >
                <button
                   className={`lg:hidden`}
                   onClick={() => setSearchActive(!searchActive)}
                >
                   <Search />
                </button>
-               <Link href={`/cart`}>
+               <Link href={`/cart`} className={`relative`}>
+                  {cart.length > 0 && (
+                     <span
+                        className={`absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 grid place-items-center text-xs`}
+                     >
+                        {cart.length}
+                     </span>
+                  )}
                   <ShoppingCart />
                </Link>
-               <button>
-                  <UserCircle2 />
-               </button>
+               {!user.ok && (
+                  <Link href={`/auth/register`}>
+                     <UserCircle2 />
+                  </Link>
+               )}
+               {user.ok && (
+                  <div className={`ms-4 lg:ms-0 flex items-center lg:gap-2`}>
+                     <div
+                        className={`w-8 h-8 rounded-full bg-black text-white uppercase grid place-items-center`}
+                     >
+                        {user.data.username[0]}
+                     </div>
+                     <span className={`hidden lg:block  font-bold`}>
+                        {user.data.username}
+                     </span>
+                     <button
+                        className={`ms-2 text-red-500`}
+                        onClick={() => logoutAction()}
+                     >
+                        <LogOut />
+                     </button>
+                  </div>
+               )}
             </div>
          </div>
          <div className={`divider`}></div>

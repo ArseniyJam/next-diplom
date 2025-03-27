@@ -7,10 +7,10 @@ import { Loader2 } from "lucide-react";
 
 const SubmitButton = ({
    text,
-   classNames,
+   classNames = "",
 }: {
    text: string;
-   classNames: string;
+   classNames?: string;
 }) => {
    const status = useFormStatus();
    return (
