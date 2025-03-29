@@ -33,8 +33,28 @@ function Header({ cart, user }: { cart: ProdCartInterface[] | []; user: any }) {
             className={` bg-black py-[10px] text-white text-[12px] lg:text-sm   flex`}
          >
             <div className={`w-full text-center`}>
-               Sign up and get 20% off to your first order.{" "}
-               <span className={`underline font-medium`}>Sign Up Now</span>
+               {!user.ok && (
+                  <span>
+                     Sign up and get 20% off to your first order.{" "}
+                     <Link
+                        href={"/auth/register"}
+                        className={`underline font-medium !text-sm`}
+                     >
+                        Sign Up Now
+                     </Link>
+                  </span>
+               )}
+               {user.ok && (
+                  <span>
+                     Get 20% off to your first order.{" "}
+                     <Link
+                        href={"/cart"}
+                        className={`underline font-medium !text-sm`}
+                     >
+                        Go to Cart
+                     </Link>
+                  </span>
+               )}
             </div>
          </div>
          <div

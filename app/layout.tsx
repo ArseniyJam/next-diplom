@@ -22,9 +22,11 @@ export default async function RootLayout({
    return (
       <html lang="en">
          <body className={`text-dark bg-white `}>
-            <div className={`px-4 xl:px-[100px]`}>
+            <div className={`px-4 xl:px-[100px] flex flex-col`}>
                <Header cart={cart} user={user} />
-               <div className={``}>{children}</div>
+               <div className={`min-h-[300px] lg:min-h-[500px] flex flex-col`}>
+                  {children}
+               </div>
                <Footer />
             </div>
          </body>

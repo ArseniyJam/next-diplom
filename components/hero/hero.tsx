@@ -21,7 +21,7 @@ function Hero() {
                      garments, designed to bring out your individuality and
                      cater to your sense of style.
                   </p>
-                  <Link href={"/public"} className={`btn lg:self-start`}>
+                  <Link href={"/shop/all"} className={`btn lg:self-start`}>
                      Shop Now
                   </Link>
                   <div
@@ -50,15 +50,13 @@ function Hero() {
                      </div>
                   </div>
                </div>
-               <div
-                  className={`flex justify-center  relative  items-end -mx-4 lg:-mx-0`}
-               >
+               <div className={`relative -mx-4 lg:-mx-0 self-center`}>
                   <Image
                      src={"/hero/main.png"}
                      width={390}
                      height={448}
                      alt={"a"}
-                     className={`xl:w-[40vw] 2xl:w-[40vw] 2xl:max-w-[1100px] xl:h-[calc(100vh-246px)]`}
+                     className={` xl:w-[40vw] 2xl:max-w-[1100px] xl:h-[calc(100vh-246px)]`}
                   />
                   <div
                      className={`absolute h-[76px] lg:h-[104px] aspect-square right-1 top-10`}

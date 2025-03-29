@@ -3,7 +3,13 @@ import { ProdCartInterface } from "@/lib/interfaces";
 import { Card, CardContent } from "@/components/ui/card";
 import CartItem from "@/components/cart/cartItem";
 
-function Cart({ products }: { products: ProdCartInterface[] | [] }) {
+function Cart({
+   products,
+   userState,
+}: {
+   products: ProdCartInterface[] | [];
+   userState: boolean;
+}) {
    const sum: number = products?.reduce(
       (acc, cur) => acc + +cur.price * +cur.count,
       0,
@@ -38,12 +44,15 @@ function Cart({ products }: { products: ProdCartInterface[] | [] }) {
                      <p>Subtotal</p>
                      <span className={`font-bold`}>${sum}</span>
                   </div>
-                  <div className={`flex items-center justify-between`}>
-                     <p>Discount(-{discount}%)</p>
-                     <span className={`font-bold text-red-500`}>
-                        -${discouted}
-                     </span>
-                  </div>
+                  {userState && (
+                     <div className={`flex items-center justify-between`}>
+                        <p>Discount(-{discount}%)</p>
+                        <span className={`font-bold text-red-500`}>
+                           -${discouted}
+                        </span>
+                     </div>
+                  )}
+
                   <div className={`flex items-center justify-between`}>
                      <p>Delivery</p>
                      <span className={`font-bold 00`}>${delivery}</span>
@@ -51,8 +60,11 @@ function Cart({ products }: { products: ProdCartInterface[] | [] }) {
                   <div className={`divider my-2`}></div>
                   <div className={`flex items-center justify-between`}>
                      <div>Total</div>
-                     <span className={`font-bold 00`}>
-                        ${sum - discouted + delivery}
+                     <span className={`font-bold`}>
+                        $
+                        {userState
+                           ? sum - discouted + delivery
+                           : sum + delivery}
                      </span>
                   </div>
                   <button type="submit" className={`btn mt-2`}>

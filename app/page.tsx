@@ -10,7 +10,7 @@ function Page() {
          <Hero />
          <ProductsPreview header={`NEW ARRIVALS`} data={products1} />
          <div className={`divider`}></div>
-         <ProductsPreview header={`TOP SELLING`} data={products2} />
+         <ProductsPreview header={`TOP RATED`} data={products2} />
          <Categories />
          <CarouselComments comments={comments} />
       </div>
