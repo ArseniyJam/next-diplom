@@ -1,8 +1,8 @@
-import React, { useActionState } from "react";
+import React, { useActionState, useEffect } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Check } from "lucide-react";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { getFilteredProducts } from "@/data/loader";
 import SizeBtn from "@/components/sizeBtn";
 import ColorsBtn from "@/components/colorsBtn";
@@ -62,6 +62,14 @@ function FilterContent() {
    const [state, formAction] = useActionState(getFilteredProducts, {
       data: null,
    });
+   const router = useRouter();
+   const pathName = usePathname();
+
+   useEffect(() => {
+      if (state.data) {
+         router.replace(`${pathName}?${state.data}`);
+      }
+   }, [state]);
 
    return (
       <div className={`p-5 h-full`}>
@@ -72,7 +80,7 @@ function FilterContent() {
                {clothingType.map((item, index) => (
                   <GenerateSimpleCheckBoxes
                      value={item}
-                     name={"clothingType"}
+                     name={"type"}
                      key={index}
                   />
                ))}

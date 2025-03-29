@@ -49,10 +49,11 @@ function RadioDropDown() {
 }
 
 function ProductInfo() {
+   // Добавить ограничение если pageSize > total то кнопка load more - disabled
    const [showCommentForm, setShowCommentForm] = useState(false);
    const { width = 0 } = useWindowSize();
-   const [pageSize, setPageSize] = useState(width < 1024 ? 3 : 6);
-   const [addToPage, setAddToPage] = useState<number>(width < 1024 ? 3 : 6);
+   const [pageSize, setPageSize] = useState(width < 1024 ? 1 : 3);
+   const [addToPage, setAddToPage] = useState<number>(width < 1024 ? 1 : 3);
    useEffect(() => {
       getComments(pageSize);
    }, [pageSize]);
