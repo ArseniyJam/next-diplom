@@ -3,7 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { Check } from "lucide-react";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { getFilteredProducts } from "@/data/loader";
+import { getFilteredSearchURL } from "@/data/loader";
 import SizeBtn from "@/components/sizeBtn";
 import ColorsBtn from "@/components/colorsBtn";
 
@@ -59,11 +59,17 @@ function FilterContent() {
 
    const [price, setPrice] = React.useState<number>(200);
 
-   const [state, formAction] = useActionState(getFilteredProducts, {
+   const [state, formAction] = useActionState(getFilteredSearchURL, {
       data: null,
    });
    const router = useRouter();
    const pathName = usePathname();
+
+   const searchParams = useSearchParams();
+   const getSearchParams = (name: string) => {
+      searchParams.get(name);
+      console.log(searchParams.get("type"));
+   };
 
    useEffect(() => {
       if (state.data) {

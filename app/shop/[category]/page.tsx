@@ -1,5 +1,6 @@
 import React from "react";
 import ShopProd from "@/components/shopPage/shopProd";
+import { getProducts } from "@/data/loader";
 
 async function Page({
    params,
@@ -10,10 +11,11 @@ async function Page({
 }) {
    const { category } = await params;
    const search = await searchParams;
-   console.log(search);
+   const data = await getProducts(search, category);
+   console.log(data);
    return (
       <div>
-         <ShopProd category={category} />
+         <ShopProd category={category} data={data} />
       </div>
    );
 }

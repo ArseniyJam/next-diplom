@@ -1,5 +1,9 @@
-export interface ProdCardInterface {
+interface ImagesInterface {
    url: string;
+}
+
+export interface ProdCardInterface {
+   images: ImagesInterface[];
    title: string;
    rating: number;
    price: number;

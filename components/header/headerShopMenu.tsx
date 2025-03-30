@@ -15,7 +15,6 @@ function HeaderShopMenu() {
       }
    };
    useEffect(() => {
-      console.log(opened);
       if (opened) {
          document.addEventListener("click", fn);
       } else {

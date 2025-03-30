@@ -17,7 +17,7 @@ export function ShopPagination({ pageCount }: { pageCount: number }) {
 
    const createUrl = (pageNumber: number) => {
       const params = new URLSearchParams(searchParams);
-      params.set("page", pageNumber.toString());
+      params.set("page", pageNumber + "");
       return `${pathName}?${params.toString()}`;
    };
 
