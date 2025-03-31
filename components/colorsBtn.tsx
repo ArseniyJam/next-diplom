@@ -1,8 +1,12 @@
 import React from "react";
 import { Check } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 function ColorsBtn({ color }: { color: string }) {
-   const [checked, setChecked] = React.useState<boolean>(false);
+   const searchParams = useSearchParams();
+   const [checked, setChecked] = React.useState<boolean>(
+      !!searchParams.get(color)?.includes(color),
+   );
 
    return (
       <label

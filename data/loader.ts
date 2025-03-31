@@ -53,8 +53,6 @@ export async function getProducts(
       category = "";
    }
 
-   console.log("red,green,blue".includes("green"));
-
    const PAGE_SIZE = 2;
    const query = qs.stringify({
       fields: [
@@ -75,10 +73,10 @@ export async function getProducts(
       filters: {
          type: { $in: type.split(",") },
          style: { $in: category || style.split(",") },
+         price: { $lte: price },
          $and: [
-            { color: { $containsi: color } },
+            { color: { $сontainsi: color } },
             { size: { $containsi: size } },
-            { price: { $lte: price } },
          ],
       },
       pagination: {

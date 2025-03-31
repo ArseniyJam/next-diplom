@@ -6,6 +6,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { getFilteredSearchURL } from "@/data/loader";
 import SizeBtn from "@/components/sizeBtn";
 import ColorsBtn from "@/components/colorsBtn";
+import Link from "next/link";
+import { getStrapiURL } from "@/lib/utils";
 
 function GenerateSimpleCheckBoxes({
    value,
@@ -16,7 +18,10 @@ function GenerateSimpleCheckBoxes({
    name: string;
    disabled?: boolean;
 }) {
-   const [checked, setChecked] = React.useState<boolean>(disabled ?? false);
+   const searchParams = useSearchParams();
+   const [checked, setChecked] = React.useState<boolean>(
+      disabled || !!searchParams.get(name)?.includes(value),
+   );
 
    return (
       <div className={``}>
@@ -45,7 +50,9 @@ function GenerateSimpleCheckBoxes({
 }
 
 function FilterContent() {
+   const baseURL = getStrapiURL();
    const pathname = usePathname();
+   const searchParams = useSearchParams();
 
    const categoryFromPathname = () => {
       const cat = pathname.split("/");
@@ -57,18 +64,19 @@ function FilterContent() {
    const size = ["xs", "sm", "md", "lg", "xl"];
    const style = ["Casual", "Formal", "Party", "Gym"];
 
-   const [price, setPrice] = React.useState<number>(200);
+   const [price, setPrice] = React.useState<string | number>(
+      searchParams.get("price") || 200,
+   );
 
    const [state, formAction] = useActionState(getFilteredSearchURL, {
       data: null,
    });
    const router = useRouter();
    const pathName = usePathname();
+   console.log(pathName);
 
-   const searchParams = useSearchParams();
    const getSearchParams = (name: string) => {
-      searchParams.get(name);
-      console.log(searchParams.get("type"));
+      return searchParams.get(name);
    };
 
    useEffect(() => {
@@ -92,10 +100,13 @@ function FilterContent() {
                ))}
             </div>
             <div className={`divider my-4`}></div>
-            <div className={`flex flex-col `}>
+            <div className={`flex flex-col`}>
+               <span className={`text-secondary text-center text-lg`}>
+                  Choose params of current product
+               </span>
                <h4 className={`satoshi`}>Price</h4>
                <Slider
-                  defaultValue={[price]}
+                  defaultValue={[+price]}
                   max={300}
                   step={1}
                   onChange={(event: any) => setPrice(event.target.value)}
@@ -144,6 +155,9 @@ function FilterContent() {
                Apply
             </button>
          </form>
+         <a href={pathname} className={`flex mt-5 justify-center text-red-500`}>
+            Reset Filters
+         </a>
          <div
             className={`hidden bg-red-500 bg-green-500 bg-orange-500 bg-dark bg-gray bg-blue-500`}
          ></div>

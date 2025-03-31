@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 function SizeBtn({ size }: { size: string }) {
-   const [checked, setChecked] = React.useState<boolean>(false);
+   const searchParams = useSearchParams();
+   const [checked, setChecked] = React.useState<boolean>(
+      !!searchParams.get("size")?.includes(size),
+   );
 
    return (
       <label htmlFor={size}>
