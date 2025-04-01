@@ -64,6 +64,8 @@ export async function getProducts(
          "size",
          "style",
          "type",
+         "updatedAt",
+         "createdAt",
       ],
       populate: {
          images: {
@@ -75,13 +77,41 @@ export async function getProducts(
          style: { $in: category || style.split(",") },
          price: { $lte: price },
          $and: [
-            { color: { $сontainsi: color } },
-            { size: { $containsi: size } },
+            {
+               color: { $contains: color.split(",") },
+            },
+            {
+               size: { $contains: size.split(",") },
+            },
          ],
       },
       pagination: {
          pageSize: PAGE_SIZE,
          page: page,
+      },
+   });
+   const url = new URL("/api/products", baseURL);
+   url.search = query;
+   return await fetchData(url.href);
+}
+
+export async function getSortedProducts(
+   paramToSort: string,
+   typeToFilter: string = "",
+) {
+   const query = qs.stringify({
+      fields: ["rating", "price", "title", "sale"],
+      populate: {
+         images: {
+            fields: ["url"],
+         },
+      },
+      sort: [`${paramToSort}:desc`],
+      filters: {
+         type: { $containsi: typeToFilter },
+      },
+      pagination: {
+         pageSize: 4,
       },
    });
    const url = new URL("/api/products", baseURL);

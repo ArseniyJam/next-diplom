@@ -73,7 +73,6 @@ function FilterContent() {
    });
    const router = useRouter();
    const pathName = usePathname();
-   console.log(pathName);
 
    const getSearchParams = (name: string) => {
       return searchParams.get(name);
