@@ -16,7 +16,7 @@ function Cart({
    );
    const discount = 20;
    const delivery = 15;
-   const discouted = sum - sum * (1 - discount / 100);
+   const discouted = Math.round(sum - sum * (1 - discount / 100));
 
    return (
       <div>

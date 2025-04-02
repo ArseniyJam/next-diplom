@@ -3,7 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { Check } from "lucide-react";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { getFilteredSearchURL } from "@/data/loader";
+import { getFilteredSearchURL } from "@/data/products";
 import SizeBtn from "@/components/sizeBtn";
 import ColorsBtn from "@/components/colorsBtn";
 import Link from "next/link";

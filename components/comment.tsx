@@ -15,14 +15,14 @@ function Comment({
          <div className={`flex flex-col gap-2`}>
             <RatingStars rating={data.rating} />
             <div className={`flex items-center text-[16px] gap-1 font-bold`}>
-               {data.userName}
+               {data.username}
                <CheckCircle2 className={`text-green-500`} />
             </div>
             <p className={`min-h-[100px] lg:min-h-[110px]`}>{data.content}</p>
             {showDate && (
                <div
                   className={`mt-2 text-sm text-black/60`}
-               >{`Posted on ${data.date}`}</div>
+               >{`Posted on ${data.createdAt}`}</div>
             )}
          </div>
       </div>

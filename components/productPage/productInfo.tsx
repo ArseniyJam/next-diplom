@@ -1,22 +1,21 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
+
 import {
    DropdownMenu,
    DropdownMenuContent,
-   DropdownMenuLabel,
    DropdownMenuRadioGroup,
    DropdownMenuRadioItem,
-   DropdownMenuSeparator,
    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState } from "react";
 import { SlidersHorizontal } from "lucide-react";
-import { comments } from "@/data/data";
+
 import Comment from "@/components/comment";
 import { useWindowSize } from "usehooks-ts";
 import CommentForm from "@/components/productPage/commentForm";
 import { getComments, postComment } from "@/data/comment";
+import { CommentInterface } from "@/lib/interfaces";
 
 function RadioDropDown() {
    const [filter, setFilter] = useState("latest");
@@ -48,14 +47,25 @@ function RadioDropDown() {
    );
 }
 
-function ProductInfo() {
+function ProductInfo({
+   details,
+   documentId,
+}: {
+   details: string;
+   documentId: string;
+}) {
    // Добавить ограничение если pageSize > total то кнопка load more - disabled
    const [showCommentForm, setShowCommentForm] = useState(false);
    const { width = 0 } = useWindowSize();
    const [pageSize, setPageSize] = useState(width < 1024 ? 1 : 3);
    const [addToPage, setAddToPage] = useState<number>(width < 1024 ? 1 : 3);
+
+   let [data, setData] = useState([]);
    useEffect(() => {
-      getComments(pageSize);
+      getComments(pageSize, documentId).then((res) => {
+         setData(res.data);
+         console.log(res.data);
+      });
    }, [pageSize]);
 
    return (
@@ -68,20 +78,9 @@ function ProductInfo() {
                <TabsTrigger value="reviews">Reviews</TabsTrigger>
             </TabsList>
             <TabsContent value="details">
-               <p className={`mt-5`}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum
-               </p>
+               <p className={`my-5`}>{details}</p>
             </TabsContent>
-            <TabsContent value="reviews">
+            <TabsContent value="reviews" className={`mb-5`}>
                <div className={`my-5 flex items-center justify-between`}>
                   <span>All Reviews(count)</span>
                   <div className={`flex items-center gap-2`}>
@@ -100,9 +99,10 @@ function ProductInfo() {
                <div
                   className={`grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3`}
                >
-                  {comments.map((comment, index) => (
-                     <Comment data={comment} key={index} showDate={true} />
-                  ))}
+                  {data &&
+                     data.map((comment: CommentInterface, index) => (
+                        <Comment data={comment} key={index} showDate={true} />
+                     ))}
                </div>
                <div className={`flex justify-center mt-6`}>
                   <button

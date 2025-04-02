@@ -7,25 +7,35 @@ export interface ProdCardInterface {
    title: string;
    rating: number;
    price: number;
-   sale?: number | null;
+   style: string;
+   documentId: string;
+   sale: number | null;
 }
 
 export interface OneProductInterface {
-   url: string[];
+   id: number;
+   documentId: string;
+   images: ImagesInterface[];
+   comments: CommentInterface[];
    title: string;
    rating: number;
    price: number;
+   type: string;
+   style: string;
    color: string[];
    size: string[];
+   details: string;
    description: string;
-   sale?: number | null;
+   sale: number | null;
 }
 
 export interface CommentInterface {
+   id: number;
    rating: number;
-   userName: string;
+   username: string;
    content: string;
-   date: string;
+   createdAt: string;
+   updatedAt: string;
 }
 
 export interface ProdCartInterface {

@@ -1,5 +1,6 @@
 import { getStrapiURL } from "@/lib/utils";
 import qs from "qs";
+import { fetchData } from "@/data/data";
 
 export function getFilteredSearchURL(prevState: any, formData: FormData) {
    const filters = {
@@ -26,18 +27,6 @@ export function getFilteredSearchURL(prevState: any, formData: FormData) {
 
 const baseURL = getStrapiURL();
 
-async function fetchData(url: string) {
-   try {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data;
-   } catch (error) {
-      console.error(error);
-
-      throw error;
-   }
-}
-
 export async function getProducts(
    {
       page = 1,
@@ -49,6 +38,7 @@ export async function getProducts(
    },
    category: string,
 ) {
+   // Категория определяет стиль
    if (category === "all") {
       category = "";
    }
@@ -100,7 +90,7 @@ export async function getSortedProducts(
    typeToFilter: string = "",
 ) {
    const query = qs.stringify({
-      fields: ["rating", "price", "title", "sale"],
+      fields: ["rating", "price", "title", "sale", "style"],
       populate: {
          images: {
             fields: ["url"],
@@ -115,6 +105,20 @@ export async function getSortedProducts(
       },
    });
    const url = new URL("/api/products", baseURL);
+   url.search = query;
+   return await fetchData(url.href);
+}
+
+export async function getProductById(id: string) {
+   const query = qs.stringify({
+      populate: {
+         images: {
+            fields: ["url"],
+         },
+         comments: true,
+      },
+   });
+   const url = new URL(`/api/products/${id}`, baseURL);
    url.search = query;
    return await fetchData(url.href);
 }

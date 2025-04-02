@@ -1,6 +1,6 @@
 import React from "react";
 import ShopProd from "@/components/shopPage/shopProd";
-import { getProducts } from "@/data/loader";
+import { getProducts } from "@/data/products";
 
 async function Page({
    params,

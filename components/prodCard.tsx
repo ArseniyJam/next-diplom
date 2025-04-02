@@ -6,10 +6,18 @@ import Price from "@/components/price";
 import Link from "next/link";
 import { getStrapiURL } from "@/lib/utils";
 
-function ProdCard({ images, sale, rating, price, title }: ProdCardInterface) {
+function ProdCard({
+   images,
+   sale,
+   rating,
+   price,
+   title,
+   documentId,
+   style,
+}: ProdCardInterface) {
    return (
       <Link
-         href={`/shop/futureCategory/futureId`}
+         href={`/shop/${style}/${documentId}`}
          className={`flex flex-col gap-1 lg:gap-2 shrink-0 `}
       >
          {images && (

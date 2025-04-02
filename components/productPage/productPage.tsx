@@ -7,11 +7,13 @@ import { OneProductInterface } from "@/lib/interfaces";
 
 import ProductForm from "@/components/productPage/productForm";
 import ProductsPreview from "@/components/productsPreview";
-import { products2 } from "@/data/data";
+
 import ProductInfo from "@/components/productPage/productInfo";
+import { getStrapiURL } from "@/lib/utils";
 
 function ProductPage({ prod }: { prod: OneProductInterface }) {
-   const [activeUrl, setActiveUrl] = useState(prod.url[0]);
+   const backendURL = getStrapiURL();
+   const [activeUrl, setActiveUrl] = useState(prod.images[0].url);
 
    const chooseActiveUrl = (url: string) => {
       setActiveUrl(url);
@@ -25,26 +27,28 @@ function ProductPage({ prod }: { prod: OneProductInterface }) {
             <div className={`flex flex-col items-center gap-3 lg:flex-row`}>
                <div className={`lg:order-1 `}>
                   <Image
-                     src={activeUrl}
+                     src={backendURL + activeUrl}
                      alt={"active image"}
                      width={358}
                      height={290}
                      className={`rounded-[20px] h-[290px] object-cover  lg:h-[530px] lg:w-[440px]`}
                   />
                </div>
-               <div className={`flex gap-3 justify-center lg:flex-col `}>
-                  {prod.url.map((url, index) => (
-                     <Image
-                        onClick={() => chooseActiveUrl(url)}
-                        src={url}
-                        key={index}
-                        alt={prod.title}
-                        width={110}
-                        height={105}
-                        className={`rounded-[20px] object-cover h-[105px] lg:h-[168px] lg:w-[152px] ${activeUrl === url ? "border border-dark" : ""}`}
-                     />
-                  ))}
-               </div>
+               {prod.images.length > 1 && (
+                  <div className={`flex gap-3 justify-center lg:flex-col `}>
+                     {prod.images.map((image, index) => (
+                        <Image
+                           onClick={() => chooseActiveUrl(image.url)}
+                           src={backendURL + image.url}
+                           key={index}
+                           alt={prod.title}
+                           width={110}
+                           height={105}
+                           className={`rounded-[20px] object-cover h-[105px] lg:h-[168px] lg:w-[152px] ${activeUrl === image.url ? "border border-dark" : ""}`}
+                        />
+                     ))}
+                  </div>
+               )}
             </div>
             <div className={`lg:flex lg:flex-col lg:w-[46vw]`}>
                <div className={`flex flex-col gap-3 `}>
@@ -67,14 +71,14 @@ function ProductPage({ prod }: { prod: OneProductInterface }) {
             </div>
          </div>
          <div>
-            <ProductInfo />
+            <ProductInfo details={prod.details} documentId={prod.documentId} />
          </div>
          <div className={`-mb-8 lg:-mb-16`}>
-            <ProductsPreview
-               header={`You might also like`}
-               data={products2}
-               linkBtn={false}
-            />
+            {/*<ProductsPreview*/}
+            {/*   header={`You might also like`}*/}
+            {/*   data={...prod}*/}
+            {/*   linkBtn={false}*/}
+            {/*/>*/}
          </div>
       </div>
    );

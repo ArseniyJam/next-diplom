@@ -2,6 +2,7 @@ import React, { useActionState, useState } from "react";
 import { Check, Minus, Plus } from "lucide-react";
 import { OneProductInterface } from "@/lib/interfaces";
 import { cartForm } from "@/data/cart";
+import { getStrapiURL } from "@/lib/utils";
 
 function ProductForm({ prod }: { prod: OneProductInterface }) {
    const [prodCount, setProdCount] = useState(1);
@@ -11,7 +12,11 @@ function ProductForm({ prod }: { prod: OneProductInterface }) {
    const [state, formAction] = useActionState(cartForm, { data: null });
    return (
       <form action={formAction} className={`lg:h-full flex flex-col`}>
-         <input type="hidden" name="image" value={prod.url[0]} />
+         <input
+            type="hidden"
+            name="image"
+            value={getStrapiURL() + prod.images[0].url}
+         />
          <input type="hidden" name="title" value={prod.title} />
          <input type="hidden" name="count" value={prodCount} />
          <input

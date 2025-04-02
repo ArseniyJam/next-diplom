@@ -1,5 +1,5 @@
 "use client";
-import { products1, products2 } from "@/data/data";
+
 import { ProdCardInterface } from "@/lib/interfaces";
 import ProdCard from "@/components/prodCard";
 import { ShopPagination } from "@/components/shopPage/shopPagination";
