@@ -12,7 +12,7 @@ function HeaderMobileNavbar({ closeMenu }: { closeMenu: () => void }) {
             <div
                className={`flex flex-col gap-10 items-center text-2xl justify-center`}
             >
-               <HeaderMobileShopMenu />
+               <HeaderMobileShopMenu closeMenu={closeMenu} />
                <Link href="/public">On Sale</Link>
                <Link href="/public">New Arrivals</Link>
                <Link href="/public">Brands</Link>

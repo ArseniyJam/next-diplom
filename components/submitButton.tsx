@@ -20,7 +20,8 @@ const SubmitButton = ({
          className={classNames}
          disabled={status.pending}
       >
-         {status.pending ? <Loader2 className="animate-spin" /> : text}
+         {status.pending && <Loader2 className="animate-spin" />}
+         {text}
       </Button>
    );
 };

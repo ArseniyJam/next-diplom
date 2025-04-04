@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 
-function HeaderMobileShopMenu() {
+function HeaderMobileShopMenu({ closeMenu }: { closeMenu: () => void }) {
    const [opened, setOpened] = useState(false);
    const styles = ["Casual", "Formal", "Party", "Gym"];
    return (
@@ -27,7 +27,9 @@ function HeaderMobileShopMenu() {
             <Link
                href={`/shop/all`}
                className={`hover:bg-dark/5 p-2 rounded`}
-               onClick={() => setOpened(!opened)}
+               onClick={() => {
+                  setOpened(!opened);
+               }}
             >
                All
             </Link>
@@ -35,7 +37,10 @@ function HeaderMobileShopMenu() {
                <Link
                   href={`/shop/${item}`}
                   className={`hover:bg-dark/5 p-2 rounded`}
-                  onClick={() => setOpened(!opened)}
+                  onClick={() => {
+                     setOpened(!opened);
+                     closeMenu();
+                  }}
                   key={i}
                >
                   {item}

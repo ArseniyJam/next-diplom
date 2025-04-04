@@ -27,8 +27,13 @@ export async function getTopComments() {
    return await fetchData(url.href);
 }
 
-export async function getComments(pageSize: number, productId: string) {
+export async function getComments(
+   pageSize: number,
+   productId: string,
+   paramToSort: string,
+) {
    const query = qs.stringify({
+      sort: [`${paramToSort}:desc`],
       filters: {
          product: {
             documentId: { $eq: productId },

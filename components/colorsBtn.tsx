@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 function ColorsBtn({ color }: { color: string }) {
    const searchParams = useSearchParams();
    const [checked, setChecked] = React.useState<boolean>(
-      !!searchParams.get(color)?.includes(color),
+      !!searchParams.get("color")?.includes(color),
    );
 
    return (
