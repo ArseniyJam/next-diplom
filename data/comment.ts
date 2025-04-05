@@ -3,14 +3,36 @@ import { revalidatePath } from "next/cache";
 import qs from "qs";
 import { getStrapiURL } from "@/lib/utils";
 import { fetchData } from "@/data/data";
+import { redirect } from "next/navigation";
 
 const baseURL = getStrapiURL();
 
 export async function postComment(prevState: any, formData: FormData) {
-   console.log(Object.fromEntries(formData));
+   const body = {
+      data: {
+         username: formData.get("username"),
+         rating: formData.get("rating"),
+         content: formData.get("content"),
+         product: { id: formData.get("id") },
+      },
+   };
 
-   revalidatePath("/shop/futureCategory/futureId");
-   return { data: null };
+   const url = new URL("/api/comments", getStrapiURL());
+   try {
+      const response = await fetch(url, {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(body),
+      });
+      const data = await response.json();
+
+      return { ...prevState, data };
+   } catch (e) {
+      console.error(e);
+      throw e;
+   }
 }
 
 export async function getTopComments() {

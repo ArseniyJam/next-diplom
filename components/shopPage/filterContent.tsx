@@ -100,9 +100,6 @@ function FilterContent() {
             </div>
             <div className={`divider my-4`}></div>
             <div className={`flex flex-col`}>
-               <span className={`text-secondary text-center text-lg`}>
-                  Choose params of current product
-               </span>
                <h4 className={`satoshi`}>Price</h4>
                <Slider
                   defaultValue={[+price]}
@@ -131,7 +128,7 @@ function FilterContent() {
                ))}
             </div>
             <div className={`divider my-4`}></div>
-            {pathname.includes("/all") && (
+            {pathname.includes("/All") && (
                <div className={`flex flex-col gap-1`}>
                   {style.map((item, index) => (
                      <GenerateSimpleCheckBoxes
@@ -142,7 +139,7 @@ function FilterContent() {
                   ))}
                </div>
             )}
-            {!pathname.includes("/all") && (
+            {!pathname.includes("/All") && (
                <GenerateSimpleCheckBoxes
                   value={categoryFromPathname()}
                   name={"style"}

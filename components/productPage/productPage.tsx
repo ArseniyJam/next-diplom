@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import RatingStars from "@/components/ratingStars";
 import Price from "@/components/price";
-import { OneProductInterface } from "@/lib/interfaces";
+import { OneProductInterface, ProdCardInterface } from "@/lib/interfaces";
 
 import ProductForm from "@/components/productPage/productForm";
 import ProductsPreview from "@/components/productsPreview";
@@ -11,7 +11,13 @@ import ProductsPreview from "@/components/productsPreview";
 import ProductInfo from "@/components/productPage/productInfo";
 import { getStrapiURL } from "@/lib/utils";
 
-function ProductPage({ prod }: { prod: OneProductInterface }) {
+function ProductPage({
+   prod,
+   recommendedProducts,
+}: {
+   prod: OneProductInterface;
+   recommendedProducts: ProdCardInterface[];
+}) {
    const backendURL = getStrapiURL();
    const [activeUrl, setActiveUrl] = useState(prod.images[0].url);
 
@@ -71,14 +77,18 @@ function ProductPage({ prod }: { prod: OneProductInterface }) {
             </div>
          </div>
          <div>
-            <ProductInfo details={prod.details} documentId={prod.documentId} />
+            <ProductInfo
+               details={prod.details}
+               documentId={prod.documentId}
+               prodId={prod.id}
+            />
          </div>
          <div className={`-mb-8 lg:-mb-16`}>
-            {/*<ProductsPreview*/}
-            {/*   header={`You might also like`}*/}
-            {/*   data={...prod}*/}
-            {/*   linkBtn={false}*/}
-            {/*/>*/}
+            <ProductsPreview
+               header={`You might also like`}
+               data={recommendedProducts}
+               linkBtn={false}
+            />
          </div>
       </div>
    );

@@ -16,6 +16,7 @@ import { useWindowSize } from "usehooks-ts";
 import CommentForm from "@/components/productPage/commentForm";
 import { getComments, postComment } from "@/data/comment";
 import { CommentInterface } from "@/lib/interfaces";
+import { getMe } from "@/services/get-me";
 
 function RadioDropDown({
    filter,
@@ -24,7 +25,6 @@ function RadioDropDown({
    filter: string;
    setFilter: any;
 }) {
-   console.log(filter);
    return (
       <DropdownMenu modal={false}>
          <DropdownMenuTrigger asChild>
@@ -35,17 +35,17 @@ function RadioDropDown({
                   className={`lg:hidden`}
                />
                <span className={`hidden lg:block w-20`}>
-                  {filter[0].toUpperCase() + filter.slice(1)}
+                  {filter === "createdAt" ? "Latest" : "Most rated"}
                </span>
             </button>
          </DropdownMenuTrigger>
          <DropdownMenuContent className="w-36">
             <DropdownMenuRadioGroup value={filter} onValueChange={setFilter}>
                <DropdownMenuRadioItem value="createdAt">
-                  latest
+                  Latest
                </DropdownMenuRadioItem>
                <DropdownMenuRadioItem value="rating">
-                  most rated
+                  Most rated
                </DropdownMenuRadioItem>
             </DropdownMenuRadioGroup>
          </DropdownMenuContent>
@@ -56,9 +56,11 @@ function RadioDropDown({
 function ProductInfo({
    details,
    documentId,
+   prodId,
 }: {
    details: string;
    documentId: string;
+   prodId: number;
 }) {
    const [showCommentForm, setShowCommentForm] = useState(false);
    const { width = 0 } = useWindowSize();
@@ -72,15 +74,14 @@ function ProductInfo({
    const [data, setData] = useState([]);
    const [loading, setLoading] = useState<boolean>(false);
    const [total, setTotal] = useState<number>(0);
+   const [newCommentFlag, setNewCommentFlag] = useState<number>(0);
    useEffect(() => {
       getComments(pageSize, documentId, filter).then((res) => {
          setData(res.data);
          setTotal(res.meta.pagination.total);
          setLoading(false);
-
-         console.log(res);
       });
-   }, [pageSize, filter]);
+   }, [pageSize, filter, newCommentFlag]);
 
    const handleClick = () => {
       setPageSize(pageSize + addToPage);
@@ -89,6 +90,17 @@ function ProductInfo({
          behavior: "smooth",
       });
    };
+
+   const [user, setUser] = useState({
+      ok: false,
+      data: null,
+      error: null,
+   });
+   useEffect(() => {
+      getMe().then((res) => {
+         setUser(res);
+      });
+   }, []);
 
    return (
       <div className={`mt-12`}>
@@ -116,7 +128,12 @@ function ProductInfo({
                   </div>
                </div>
                {showCommentForm && (
-                  <CommentForm setShowCommentForm={setShowCommentForm} />
+                  <CommentForm
+                     setShowCommentForm={setShowCommentForm}
+                     setNewCommentFlag={setNewCommentFlag}
+                     prodId={prodId}
+                     user={user}
+                  />
                )}
                <div
                   ref={commentsRef}

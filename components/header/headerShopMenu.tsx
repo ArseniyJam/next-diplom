@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
 function HeaderShopMenu() {
-   const styles = ["Casual", "Formal", "Party", "Gym"];
+   const styles = ["All", "Casual", "Formal", "Party", "Gym"];
    const [opened, setOpened] = useState(false);
    const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -42,13 +42,6 @@ function HeaderShopMenu() {
             <div
                className={`flex flex-col  shadow-lg rounded-lg w-32 px-4 py-3 mt-2 bg-white`}
             >
-               <Link
-                  href={`/shop/all`}
-                  className={`hover:bg-dark/5 p-2 rounded`}
-                  onClick={() => setOpened(!opened)}
-               >
-                  All
-               </Link>
                {styles.map((item, i) => (
                   <Link
                      href={`/shop/${item}`}

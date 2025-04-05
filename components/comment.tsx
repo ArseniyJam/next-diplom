@@ -2,6 +2,7 @@ import React from "react";
 import { CommentInterface } from "@/lib/interfaces";
 import RatingStars from "@/components/ratingStars";
 import { CheckCircle2 } from "lucide-react";
+import moment from "moment";
 
 function Comment({
    data,
@@ -22,7 +23,7 @@ function Comment({
             {showDate && (
                <div
                   className={`mt-2 text-sm text-black/60`}
-               >{`Posted on ${data.createdAt}`}</div>
+               >{`Posted on ${moment(data.createdAt).format("MMMM Do YYYY, h:mm a")}`}</div>
             )}
          </div>
       </div>

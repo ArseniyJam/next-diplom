@@ -39,7 +39,7 @@ export async function getProducts(
    category: string,
 ) {
    // Категория определяет стиль
-   if (category === "all") {
+   if (category === "All") {
       category = "";
    }
 
@@ -87,10 +87,10 @@ export async function getProducts(
 
 export async function getSortedProducts(
    paramToSort: string,
-   typeToFilter: string = "",
+   typeToFilter: string = "T-shirts,Shorts,Shirts,Hoodie,Jeans",
 ) {
    const query = qs.stringify({
-      fields: ["rating", "price", "title", "sale", "style"],
+      fields: ["rating", "price", "title", "sale", "style", "type"],
       populate: {
          images: {
             fields: ["url"],
@@ -98,7 +98,7 @@ export async function getSortedProducts(
       },
       sort: [`${paramToSort}:desc`],
       filters: {
-         type: { $containsi: typeToFilter },
+         type: { $in: typeToFilter.split(",") },
       },
       pagination: {
          pageSize: 4,

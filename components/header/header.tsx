@@ -74,7 +74,7 @@ function Header({ cart, user }: { cart: ProdCartInterface[] | []; user: any }) {
             </Link>
             <HeaderNavbar />
             {openMenu && <HeaderMobileNavbar closeMenu={closeMenu} />}
-            <div></div>
+
             <div
                className={`lg:block top-28 lg:top-0 lg:mx-0 left-1/2 -translate-x-1/2 lg:left-0 lg:-translate-x-0 max-w-4xl w-[80vw] lg:w-full ${searchActive ? "absolute" : "hidden"}`}
             >

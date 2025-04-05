@@ -60,7 +60,7 @@ export async function registerAction(prevState: any, formData: FormData) {
    const cookieStore = await cookies();
    cookieStore.set("jwt", response.jwt);
 
-   redirect("/shop/all");
+   redirect("/shop/All");
 }
 
 const schemaLogin = z.object({
@@ -103,7 +103,7 @@ export async function loginAction(prevState: any, formData: FormData) {
    const cookieStore = await cookies();
    cookieStore.set("jwt", response.jwt);
 
-   redirect("/shop/all");
+   redirect("/shop/All");
 }
 
 export async function logoutAction() {

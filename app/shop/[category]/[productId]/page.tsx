@@ -1,6 +1,6 @@
 import ProductPage from "@/components/productPage/productPage";
 
-import { getProductById } from "@/data/products";
+import { getProductById, getSortedProducts } from "@/data/products";
 
 async function Page({
    params,
@@ -10,8 +10,17 @@ async function Page({
    const { productId } = await params;
 
    const product = await getProductById(productId);
+   const recommendedProducts = await getSortedProducts(
+      "createdAt",
+      product.data.type,
+   );
 
-   return <ProductPage prod={product.data} />;
+   return (
+      <ProductPage
+         prod={product.data}
+         recommendedProducts={recommendedProducts.data}
+      />
+   );
 }
 
 export default Page;

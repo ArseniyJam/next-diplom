@@ -1,6 +1,5 @@
 import Hero from "@/components/hero/hero";
 import ProductsPreview from "@/components/productsPreview";
-import { comments } from "@/data/data";
 import Categories from "@/components/homePage/categories";
 import CarouselComments from "@/components/homePage/carouselComments";
 import { getSortedProducts } from "@/data/products";
