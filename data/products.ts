@@ -10,6 +10,7 @@ export function getFilteredSearchURL(prevState: any, formData: FormData) {
       size: formData.getAll("size"),
       style: formData.getAll("style"),
    };
+   console.log(filters);
 
    let searchStr = "";
    for (const filtersKey in filters) {

@@ -25,8 +25,8 @@ function ProdCard({
                src={`http://localhost:1337${images[0].url}`}
                alt={title}
                width={160}
-               height={160}
-               className={`mb-1.5 lg:mb-2 h-[165px] lg:w-[290px] lg:h-[295px] rounded-[12px] lg:rounded-[20px]`}
+               height={165}
+               className={`mb-1.5 lg:mb-2 w-[160px] h-[165px] lg:w-[290px] lg:h-[295px] rounded-[12px] lg:rounded-[20px]`}
             />
          )}
          <div

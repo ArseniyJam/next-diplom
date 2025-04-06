@@ -17,11 +17,7 @@ function FilterDrawer() {
    const [openDrawer, setOpenDrawer] = useState(false);
    return (
       <div>
-         <Drawer
-            open={openDrawer}
-            onOpenChange={setOpenDrawer}
-            autoFocus={openDrawer}
-         >
+         <Drawer open={openDrawer} onOpenChange={setOpenDrawer}>
             <DrawerTrigger>
                <SlidersHorizontal />
             </DrawerTrigger>
@@ -30,7 +26,7 @@ function FilterDrawer() {
                   <X />
                </DrawerClose>
                <DrawerTitle className={`hidden`}>Drawer</DrawerTitle>
-               <FilterContent />
+               <FilterContent setOpenDrawer={setOpenDrawer} />
             </DrawerContent>
          </Drawer>
       </div>

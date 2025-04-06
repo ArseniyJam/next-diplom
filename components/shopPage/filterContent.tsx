@@ -27,11 +27,11 @@ function GenerateSimpleCheckBoxes({
       <div className={``}>
          <label
             htmlFor={value}
-            className={`flex items-center justify-between ${disabled ? "opacity-50 pointer-events-none" : ""}`}
+            className={`flex items-center justify-between  ${disabled ? "opacity-50 pointer-events-none" : ""}`}
          >
             {value}
             <input
-               className={`hidden`}
+               className={`absolute w-full opacity-0 lg:hidden`}
                type="checkbox"
                name={name}
                id={value}
@@ -49,7 +49,11 @@ function GenerateSimpleCheckBoxes({
    );
 }
 
-function FilterContent() {
+function FilterContent({
+   setOpenDrawer = () => {},
+}: {
+   setOpenDrawer?: (value: boolean) => void;
+}) {
    const baseURL = getStrapiURL();
    const pathname = usePathname();
    const searchParams = useSearchParams();
@@ -147,7 +151,11 @@ function FilterContent() {
                />
             )}
 
-            <button type="submit" className={`btn w-full mt-10`}>
+            <button
+               type="submit"
+               onClick={() => setOpenDrawer(false)}
+               className={`btn w-full mt-10`}
+            >
                Apply
             </button>
          </form>

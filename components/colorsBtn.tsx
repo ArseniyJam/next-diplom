@@ -11,14 +11,14 @@ function ColorsBtn({ color }: { color: string }) {
    return (
       <label
          htmlFor={color}
-         className={`h-9 w-9 rounded-full ${color === "dark" || color === "white" ? `bg-${color} border` : `bg-${color}-500`}  flex items-center justify-center`}
+         className={`relative h-9 w-9 rounded-full ${color === "dark" || color === "white" ? `bg-${color} border` : `bg-${color}-500`}  flex items-center justify-center`}
       >
          <input
             onChange={() => {
                setChecked(!checked);
             }}
             type="checkbox"
-            className={`hidden`}
+            className={`absolute w-full opacity-0 lg:hidden`}
             name="color"
             value={color}
             id={color}

@@ -8,14 +8,14 @@ function SizeBtn({ size }: { size: string }) {
    );
 
    return (
-      <label htmlFor={size}>
+      <label htmlFor={size} className={`relative`}>
          <input
             onChange={() => setChecked(!checked)}
             type="checkbox"
             id={size}
             value={size}
             name={`size`}
-            className={`hidden`}
+            className={`absolute w-full opacity-0 lg:hidden`}
             checked={checked}
          />
          <span
