@@ -2,13 +2,9 @@ import {
    Drawer,
    DrawerClose,
    DrawerContent,
-   DrawerDescription,
-   DrawerFooter,
-   DrawerHeader,
    DrawerTitle,
    DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button";
 import FilterContent from "@/components/shopPage/filterContent";
 import { SlidersHorizontal, X } from "lucide-react";
 import { useState } from "react";

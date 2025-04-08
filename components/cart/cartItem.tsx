@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+
 import { ProdCartInterface } from "@/lib/interfaces";
 import Image from "next/image";
 import { Minus, Plus, TrashIcon } from "lucide-react";

@@ -7,15 +7,20 @@ import {
    ShoppingCart,
    UserCircle2,
 } from "lucide-react";
-import HeaderShopMenu from "@/components/header/headerShopMenu";
 import HeaderNavbar from "@/components/header/headerNavbar";
 import HeaderMobileNavbar from "@/components/header/headerMobileNavbar";
 import { useEffect, useState } from "react";
-import { ProdCartInterface } from "@/lib/interfaces";
+import { ProdCartInterface, UserInterface } from "@/lib/interfaces";
 import { logoutAction } from "@/data/auth";
 import HeaderSearch from "@/components/header/search";
 
-function Header({ cart, user }: { cart: ProdCartInterface[] | []; user: any }) {
+function Header({
+   cart,
+   user,
+}: {
+   cart: ProdCartInterface[] | [];
+   user: UserInterface;
+}) {
    const [openMenu, setOpenMenu] = useState(false);
    const [searchActive, setSearchActive] = useState(false);
    const closeMenu = () => {
@@ -106,10 +111,10 @@ function Header({ cart, user }: { cart: ProdCartInterface[] | []; user: any }) {
                      <div
                         className={`w-8 h-8 rounded-full bg-black text-white uppercase grid place-items-center`}
                      >
-                        {user.data.username[0]}
+                        {user?.data?.username[0]}
                      </div>
                      <span className={`hidden lg:block  font-bold`}>
-                        {user.data.username}
+                        {user?.data?.username}
                      </span>
                      <button
                         className={`ms-2 text-red-500`}

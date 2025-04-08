@@ -1,14 +1,16 @@
 import React from "react";
 import { Facebook, Github, Instagram, Twitter } from "lucide-react";
 import FooterBadge from "@/components/footer/footerBadge";
+import Image from "next/image";
+import Link from "next/link";
 
 function Footer() {
    const paymentsUrls = [
-      "/payments/Badge.png",
-      "/payments/Badge2.png",
-      "/payments/Badge3.png",
-      "/payments/Badge4.png",
-      "/payments/Badge5.png",
+      "/payments/Badge1.svg",
+      "/payments/Badge2.svg",
+      "/payments/Badge3.svg",
+      "/payments/Badge4.svg",
+      "/payments/Badge5.svg",
    ];
    return (
       <div
@@ -85,13 +87,17 @@ function Footer() {
             >
                Shop.co © 2000-2023, All Rights Reserved
             </span>
-            <div className={`flex justify-center`}>
+            <div className={`flex gap-4 lg:gap-6 justify-center `}>
                {paymentsUrls.map((url, i) => (
-                  <img
-                     key={i}
-                     src={url}
-                     className={`h-13 lg:h-14 object-contain`}
-                  />
+                  <Link href={`/`} key={i}>
+                     <Image
+                        alt={`social ${i}`}
+                        width={70}
+                        height={52}
+                        src={url}
+                        className={`h-13 lg:h-14 object-contain`}
+                     />
+                  </Link>
                ))}
             </div>
          </div>

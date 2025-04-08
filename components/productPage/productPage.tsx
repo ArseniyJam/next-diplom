@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 import RatingStars from "@/components/ratingStars";
 import Price from "@/components/price";
 import { OneProductInterface, ProdCardInterface } from "@/lib/interfaces";
@@ -10,6 +9,7 @@ import ProductsPreview from "@/components/productsPreview";
 
 import ProductInfo from "@/components/productPage/productInfo";
 import { getStrapiURL } from "@/lib/utils";
+import { useState } from "react";
 
 function ProductPage({
    prod,

@@ -10,6 +10,8 @@ function ProductForm({ prod }: { prod: OneProductInterface }) {
    const [radioSize, setRadioSize] = useState("");
 
    const [state, formAction] = useActionState(cartForm, { data: null });
+   if (state) {
+   }
    return (
       <form action={formAction} className={`lg:h-full flex flex-col`}>
          <input

@@ -1,18 +1,17 @@
-import React, { useActionState, useEffect, useState } from "react";
-import {
-   Card,
-   CardContent,
-   CardDescription,
-   CardFooter,
-   CardHeader,
-   CardTitle,
-} from "@/components/ui/card";
+import React, {
+   Dispatch,
+   SetStateAction,
+   useActionState,
+   useEffect,
+   useState,
+} from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Plus, Star, StarHalf, X } from "lucide-react";
 import { postComment } from "@/data/comment";
 import SubmitButton from "@/components/submitButton";
-import { getMe } from "@/services/get-me";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { UserInterface } from "@/lib/interfaces";
@@ -60,7 +59,7 @@ function CommentForm({
    setShowCommentForm: (value: boolean) => void;
    user: UserInterface;
    prodId: number;
-   setNewCommentFlag: any;
+   setNewCommentFlag: Dispatch<SetStateAction<number>>;
 }) {
    const path = usePathname();
 

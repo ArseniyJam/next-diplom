@@ -61,7 +61,7 @@ function Hero() {
                   <div
                      className={`absolute h-[76px] lg:h-[104px] aspect-square right-1 top-10`}
                   >
-                     <img src="/hero/blackStar.png" alt="" />
+                     <img src="/hero/blackStar.png" alt="star" />
                   </div>
                   <div
                      className={`absolute h-[44px] lg:h-[56px] aspect-square left-2 top-32 lg:top-44 xl:top-64`}

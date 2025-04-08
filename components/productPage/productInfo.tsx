@@ -8,13 +8,20 @@ import {
    DropdownMenuRadioItem,
    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { RefObject, useEffect, useRef, useState } from "react";
+import {
+   Dispatch,
+   RefObject,
+   SetStateAction,
+   useEffect,
+   useRef,
+   useState,
+} from "react";
 import { Loader2, SlidersHorizontal } from "lucide-react";
 
 import Comment from "@/components/comment";
 import { useWindowSize } from "usehooks-ts";
 import CommentForm from "@/components/productPage/commentForm";
-import { getComments, postComment } from "@/data/comment";
+import { getComments } from "@/data/comment";
 import { CommentInterface, UserInterface } from "@/lib/interfaces";
 import { getMe } from "@/services/get-me";
 
@@ -23,7 +30,7 @@ function RadioDropDown({
    setFilter,
 }: {
    filter: string;
-   setFilter: any;
+   setFilter: Dispatch<SetStateAction<string>>;
 }) {
    return (
       <DropdownMenu modal={false}>
@@ -65,7 +72,7 @@ function ProductInfo({
    const [showCommentForm, setShowCommentForm] = useState(false);
    const { width = 0 } = useWindowSize();
    const [pageSize, setPageSize] = useState(width < 1024 ? 1 : 3);
-   const [addToPage, setAddToPage] = useState<number>(width < 1024 ? 1 : 3);
+   const addToPage: number = width < 1024 ? 1 : 3;
 
    const [filter, setFilter] = useState("createdAt");
 
@@ -99,7 +106,6 @@ function ProductInfo({
    useEffect(() => {
       getMe().then((res) => {
          setUser(res);
-         console.log(res);
       });
    }, []);
 

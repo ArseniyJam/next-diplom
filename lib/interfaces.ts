@@ -80,3 +80,27 @@ export interface UserInterface {
    error: StrapiErrorInterface | null;
    ok: boolean;
 }
+
+export interface ShopPageParamsProps {
+   category: string;
+}
+export interface ShopPageSearchParamsProps {
+   type?: string;
+   price?: string;
+   color?: string;
+   size?: string;
+   page?: string;
+   search?: string;
+}
+
+export interface ShopProdProps {
+   data: ProdCardInterface[] | null;
+   meta: {
+      pagination: {
+         page: number;
+         pageSize: number;
+         pageCount: number;
+         total: number;
+      };
+   };
+}

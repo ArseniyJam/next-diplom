@@ -1,4 +1,4 @@
-import React, { useActionState, useEffect } from "react";
+import React, { ChangeEvent, useActionState, useEffect } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Check } from "lucide-react";
 
@@ -6,8 +6,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { getFilteredSearchURL } from "@/data/products";
 import SizeBtn from "@/components/sizeBtn";
 import ColorsBtn from "@/components/colorsBtn";
-import Link from "next/link";
-import { getStrapiURL } from "@/lib/utils";
 
 function GenerateSimpleCheckBoxes({
    value,
@@ -54,7 +52,6 @@ function FilterContent({
 }: {
    setOpenDrawer?: (value: boolean) => void;
 }) {
-   const baseURL = getStrapiURL();
    const pathname = usePathname();
    const searchParams = useSearchParams();
 
@@ -77,10 +74,6 @@ function FilterContent({
    });
    const router = useRouter();
    const pathName = usePathname();
-
-   const getSearchParams = (name: string) => {
-      return searchParams.get(name);
-   };
 
    useEffect(() => {
       if (state.data) {
@@ -109,7 +102,9 @@ function FilterContent({
                   defaultValue={[+price]}
                   max={300}
                   step={1}
-                  onChange={(event: any) => setPrice(event.target.value)}
+                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                     setPrice(event.target.value)
+                  }
                   className={`my-1`}
                />
                <input type="hidden" name="price" value={price} />

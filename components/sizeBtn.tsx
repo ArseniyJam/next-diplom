@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 function SizeBtn({ size }: { size: string }) {
    const searchParams = useSearchParams();
-   const [checked, setChecked] = React.useState<boolean>(
+   const [checked, setChecked] = useState<boolean>(
       !!searchParams.get("size")?.includes(size),
    );
 

@@ -10,7 +10,6 @@ export function getFilteredSearchURL(prevState: any, formData: FormData) {
       size: formData.getAll("size"),
       style: formData.getAll("style"),
    };
-   console.log(filters);
 
    let searchStr = "";
    for (const filtersKey in filters) {
@@ -30,7 +29,7 @@ const baseURL = getStrapiURL();
 
 export async function getProducts(
    {
-      page = 1,
+      page = "1",
       color = "",
       price = "200",
       size = "",

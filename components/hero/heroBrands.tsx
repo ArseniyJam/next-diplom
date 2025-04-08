@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 function HeroBrands() {
    const brandUrls = [
@@ -15,7 +16,13 @@ function HeroBrands() {
          >
             {brandUrls.map((url, i) => (
                <div key={i}>
-                  <img src={url} alt="brand" className={`h-[21px] px-2`} />
+                  <Image
+                     height={21}
+                     width={100}
+                     src={url}
+                     alt="brand"
+                     className={`h-[21px] lg:w-[120px] px-2`}
+                  />
                </div>
             ))}
          </div>

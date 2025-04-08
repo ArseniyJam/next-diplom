@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import HeaderShopMenu from "@/components/header/headerShopMenu";
 import Link from "next/link";
 import HeaderMobileShopMenu from "@/components/header/headerMobileShopMenu";
 import { X } from "lucide-react";

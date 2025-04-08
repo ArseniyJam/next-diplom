@@ -1,17 +1,18 @@
 "use client";
 
-import { ProdCardInterface } from "@/lib/interfaces";
 import ProdCard from "@/components/prodCard";
 import { ShopPagination } from "@/components/shopPage/shopPagination";
 import FilterDrawer from "@/components/shopPage/filterDrawer";
 import FilterContent from "@/components/shopPage/filterContent";
-import { useState } from "react";
-import { SlidersHorizontal } from "lucide-react";
+import { ProdCardInterface, ShopProdProps } from "@/lib/interfaces";
 
-function ShopProd({ category, data }: { category: string; data: any }) {
-   const pageSize = 2;
-   const pagesCount = Math.floor(data.length / pageSize);
-
+function ShopProd({
+   category,
+   data,
+}: {
+   category: string;
+   data: ShopProdProps;
+}) {
    return (
       <div className={`lg:pt-[50px] pt-5`}>
          <div className={`flex gap-2 lg:gap-8`}>
@@ -32,9 +33,11 @@ function ShopProd({ category, data }: { category: string; data: any }) {
                <div
                   className={`flex flex-wrap gap-4 lg:gap-6 justify-center h-full`}
                >
-                  {data.data.map((product: any, index: number) => (
-                     <ProdCard {...product} key={index} />
-                  ))}
+                  {data?.data?.map(
+                     (product: ProdCardInterface, index: number) => (
+                        <ProdCard {...product} key={index} />
+                     ),
+                  )}
                </div>
                <div className={`divider`}></div>
                <ShopPagination pageCount={data.meta.pagination.pageCount} />

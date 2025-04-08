@@ -10,9 +10,9 @@ function RatingStars({
    starSize?: string;
    ratingSize?: string;
 }) {
-   let arr: any = Array.from({
-      length: rating % 1 < 0.75 ? Math.floor(rating) : Math.ceil(rating),
-   }).fill(0);
+   const arr = Array.from(
+      Array(rating % 1 < 0.75 ? Math.floor(rating) : Math.ceil(rating)).keys(),
+   );
 
    return (
       <div className={`flex text-[#FFC633] items-center lg:gap-1`}>
