@@ -15,7 +15,7 @@ import Comment from "@/components/comment";
 import { useWindowSize } from "usehooks-ts";
 import CommentForm from "@/components/productPage/commentForm";
 import { getComments, postComment } from "@/data/comment";
-import { CommentInterface } from "@/lib/interfaces";
+import { CommentInterface, UserInterface } from "@/lib/interfaces";
 import { getMe } from "@/services/get-me";
 
 function RadioDropDown({
@@ -91,7 +91,7 @@ function ProductInfo({
       });
    };
 
-   const [user, setUser] = useState({
+   const [user, setUser] = useState<UserInterface>({
       ok: false,
       data: null,
       error: null,
@@ -99,6 +99,7 @@ function ProductInfo({
    useEffect(() => {
       getMe().then((res) => {
          setUser(res);
+         console.log(res);
       });
    }, []);
 

@@ -19,8 +19,8 @@ function Cart({
    const discouted = Math.round(sum - sum * (1 - discount / 100));
 
    return (
-      <div>
-         <h2 className={`my-2`}>Your Cart</h2>
+      <div className={`flex flex-col gap-4`}>
+         <h2>Your Cart</h2>
          <div
             className={`flex flex-col lg:flex-row gap-4 justify-center lg:items-start`}
          >

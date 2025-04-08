@@ -2,10 +2,11 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { getCategories } from "@/data/data";
 
 function HeaderMobileShopMenu({ closeMenu }: { closeMenu: () => void }) {
    const [opened, setOpened] = useState(false);
-   const styles = ["All", "Casual", "Formal", "Party", "Gym"];
+   const categories: string[] = getCategories();
    return (
       <div className={``}>
          <button
@@ -24,7 +25,7 @@ function HeaderMobileShopMenu({ closeMenu }: { closeMenu: () => void }) {
          <div
             className={` transition-all duration-500 overflow-hidden flex flex-col gap-2  items-center text-2xl max-h-0 mt-2 ${opened ? "max-h-80" : ""}`}
          >
-            {styles.map((item, i) => (
+            {categories.map((item, i) => (
                <Link
                   href={`/shop/${item}`}
                   className={`hover:bg-dark/5 p-2 rounded`}

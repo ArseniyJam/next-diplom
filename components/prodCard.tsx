@@ -22,7 +22,7 @@ function ProdCard({
       >
          {images && (
             <Image
-               src={`http://localhost:1337${images[0].url}`}
+               src={getStrapiURL() + images[0].url}
                alt={title}
                width={160}
                height={165}

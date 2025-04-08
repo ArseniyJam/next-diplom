@@ -15,6 +15,7 @@ import SubmitButton from "@/components/submitButton";
 import { getMe } from "@/services/get-me";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { UserInterface } from "@/lib/interfaces";
 
 function StarPicker({
    setRating,
@@ -57,7 +58,7 @@ function CommentForm({
    setNewCommentFlag,
 }: {
    setShowCommentForm: (value: boolean) => void;
-   user: any;
+   user: UserInterface;
    prodId: number;
    setNewCommentFlag: any;
 }) {
@@ -110,7 +111,7 @@ function CommentForm({
                      />
                      <Input
                         type={`text`}
-                        defaultValue={user.data.username}
+                        defaultValue={user?.data?.username}
                         name={`username`}
                         className={`pointer-events-none`}
                      />

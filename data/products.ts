@@ -36,6 +36,7 @@ export async function getProducts(
       size = "",
       style = "Casual,Formal,Party,Gym",
       type = "T-shirts,Shorts,Shirts,Hoodie,Jeans",
+      search = "",
    },
    category: string,
 ) {
@@ -64,6 +65,7 @@ export async function getProducts(
          },
       },
       filters: {
+         title: { $contains: search },
          type: { $in: type.split(",") },
          style: { $in: category || style.split(",") },
          price: { $lte: price },
@@ -89,6 +91,7 @@ export async function getProducts(
 export async function getSortedProducts(
    paramToSort: string,
    typeToFilter: string = "T-shirts,Shorts,Shirts,Hoodie,Jeans",
+   id: number = 0,
 ) {
    const query = qs.stringify({
       fields: ["rating", "price", "title", "sale", "style", "type"],
@@ -100,6 +103,7 @@ export async function getSortedProducts(
       sort: [`${paramToSort}:desc`],
       filters: {
          type: { $in: typeToFilter.split(",") },
+         id: { $notIn: id },
       },
       pagination: {
          pageSize: 4,

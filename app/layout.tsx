@@ -24,7 +24,9 @@ export default async function RootLayout({
          <body className={`text-dark bg-white `}>
             <div className={`px-4 xl:px-[100px] flex flex-col`}>
                <Header cart={cart} user={user} />
-               <div className={`min-h-[300px] lg:min-h-[500px] flex flex-col`}>
+               <div
+                  className={`min-h-[300px] lg:min-h-[500px] 2xl:min-h-[600px] flex flex-col`}
+               >
                   {children}
                </div>
                <Footer />

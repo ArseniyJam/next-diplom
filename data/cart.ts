@@ -48,9 +48,9 @@ export async function cartForm(prevState: any, formData: FormData) {
 export async function getCart() {
    const cookieStore = await cookies();
 
-   const cookieCart: ProdCartInterface[] | [] = cookieStore.get("cart")
-      ? JSON.parse(cookieStore.get("cart").value)
-      : [];
+   const cookieCart: ProdCartInterface[] | [] = JSON.parse(
+      cookieStore.get("cart")?.value ?? "[]",
+   );
 
    return cookieCart;
 }

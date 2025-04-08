@@ -9,3 +9,7 @@ export async function fetchData(url: string) {
       throw error;
    }
 }
+
+export function getCategories() {
+   return ["All", "Casual", "Formal", "Party", "Gym"];
+}

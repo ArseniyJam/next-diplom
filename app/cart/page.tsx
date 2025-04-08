@@ -9,7 +9,7 @@ async function Page() {
    const cart = await getCart();
    const user = await getMe();
    return (
-      <div>
+      <div className={`grow flex flex-col`}>
          {cart.length > 0 ? (
             <Cart products={cart} userState={user.ok} />
          ) : (

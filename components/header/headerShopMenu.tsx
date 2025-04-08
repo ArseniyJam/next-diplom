@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { getCategories } from "@/data/data";
 
 function HeaderShopMenu() {
-   const styles = ["All", "Casual", "Formal", "Party", "Gym"];
+   const categories: string[] = getCategories();
    const [opened, setOpened] = useState(false);
    const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -42,7 +43,7 @@ function HeaderShopMenu() {
             <div
                className={`flex flex-col  shadow-lg rounded-lg w-32 px-4 py-3 mt-2 bg-white`}
             >
-               {styles.map((item, i) => (
+               {categories.map((item, i) => (
                   <Link
                      href={`/shop/${item}`}
                      className={`hover:bg-dark/5 p-2 rounded`}

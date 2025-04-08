@@ -3,9 +3,7 @@ import Link from "next/link";
 
 function EmptyCart() {
    return (
-      <div
-         className={`flex flex-col gap-4 justify-center items-center min-h-[300px]`}
-      >
+      <div className={`flex flex-col gap-4 justify-center items-center grow`}>
          <span className={`text-3xl lg:text-5xl text-secondary`}>
             Your Cart is Empty :({" "}
          </span>

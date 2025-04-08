@@ -62,3 +62,21 @@ export interface StrapiErrorsProps {
    name: string;
    status?: string | null;
 }
+
+export interface StrapiErrorInterface {
+   status: number;
+   name: string;
+   message: string;
+}
+export interface UserDataInterface {
+   createdAt: string;
+   email: string;
+   id: number;
+   updatedAt: string;
+   username: string;
+}
+export interface UserInterface {
+   data: UserDataInterface | null;
+   error: StrapiErrorInterface | null;
+   ok: boolean;
+}

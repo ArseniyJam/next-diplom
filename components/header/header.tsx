@@ -13,6 +13,7 @@ import HeaderMobileNavbar from "@/components/header/headerMobileNavbar";
 import { useEffect, useState } from "react";
 import { ProdCartInterface } from "@/lib/interfaces";
 import { logoutAction } from "@/data/auth";
+import HeaderSearch from "@/components/header/search";
 
 function Header({ cart, user }: { cart: ProdCartInterface[] | []; user: any }) {
    const [openMenu, setOpenMenu] = useState(false);
@@ -75,22 +76,7 @@ function Header({ cart, user }: { cart: ProdCartInterface[] | []; user: any }) {
             <HeaderNavbar />
             {openMenu && <HeaderMobileNavbar closeMenu={closeMenu} />}
 
-            <div
-               className={`lg:block top-28 lg:top-0 lg:mx-0 left-1/2 -translate-x-1/2 lg:left-0 lg:-translate-x-0 max-w-4xl w-[80vw] lg:w-full ${searchActive ? "absolute" : "hidden"}`}
-            >
-               <div className={`lg:relative `}>
-                  <input
-                     type="text"
-                     placeholder={`Search for products...`}
-                     className={`rounded-[62px] bg-gray grow px-4 py-3 ps-[52px]  border border-mutedGray shadow-md lg:shadow-none lg:border-none w-full`}
-                  />
-
-                  <Search
-                     color={"#999999"}
-                     className={`absolute top-3 left-4 `}
-                  />
-               </div>
-            </div>
+            <HeaderSearch searchActive={searchActive} />
             <div
                className={`flex gap-3 lg:gap-5 grow lg:grow-0 justify-end items-center`}
             >
