@@ -8,7 +8,7 @@ import ProductForm from "@/components/productPage/productForm";
 import ProductsPreview from "@/components/productsPreview";
 
 import ProductInfo from "@/components/productPage/productInfo";
-import { getStrapiMedia, getStrapiURL } from "@/lib/utils";
+import { getStrapiMedia } from "@/lib/utils";
 import { useState } from "react";
 
 function ProductPage({
