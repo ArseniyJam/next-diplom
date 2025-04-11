@@ -24,9 +24,12 @@ function HeaderSearch({ searchActive }: { searchActive: boolean }) {
       >
          <div className={`lg:relative`}>
             <input
-               onFocus={() => {
-                  if (!pathname.startsWith("/shop")) {
-                     router.push(`/shop/all + ${searchParams.toString()}`);
+               onKeyDown={(event) => {
+                  if (
+                     !pathname.startsWith("/shop") &&
+                     event.key !== "Backspace"
+                  ) {
+                     router.push(`/shop/all?${searchParams.toString()}`);
                   }
                }}
                type="text"
