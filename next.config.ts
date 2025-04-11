@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
             port: "1337",
             pathname: "/uploads/**/*",
          },
+         {
+            protocol: "https",
+            hostname: "steadfast-advice-cc43d47f25.strapiapp.com",
+         },
       ],
    },
 };
