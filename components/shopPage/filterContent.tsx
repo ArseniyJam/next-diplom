@@ -82,9 +82,9 @@ function FilterContent({
    }, [state]);
 
    return (
-      <div className={`p-5 h-full`}>
-         <h4 className={`satoshi`}>Filters</h4>
-         <div className={`divider my-4`}></div>
+      <div className={`p-5 pt-0 lg:pt-5 lg:h-full`}>
+         <h4 className={`satoshi hidden lg:block`}>Filters</h4>
+         <div className={`divider my-4 hidden lg:block`}></div>
          <form action={formAction}>
             <div className={`flex flex-col gap-1`}>
                {clothingType.map((item, index) => (

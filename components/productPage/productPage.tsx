@@ -47,7 +47,7 @@ function ProductPage({
                      {prod.images.map((image, index) => (
                         <Image
                            onClick={() => chooseActiveUrl(image.url)}
-                           src={backendURL + image.url}
+                           src={getStrapiMedia(image.url)}
                            key={index}
                            alt={prod.title}
                            width={110}

@@ -5,7 +5,7 @@ export async function getMe() {
    const baseURL = getStrapiURL();
 
    const url = new URL("/api/users/me", baseURL);
-
+   console.log(baseURL);
    const jwt = await getJWT();
    if (!jwt) return { ok: false, data: null, error: null };
 

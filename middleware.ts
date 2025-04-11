@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getMe } from "@/services/get-me";
 
-const authRoutes = ["/login", "/register"];
+const authRoutes = ["/auth/login", "/auth/register"];
 const categories = [
    "/shop/All",
    "/shop/Casual",

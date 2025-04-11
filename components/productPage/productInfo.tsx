@@ -106,6 +106,7 @@ function ProductInfo({
    useEffect(() => {
       getMe().then((res) => {
          setUser(res);
+         console.log(res);
       });
    }, []);
 

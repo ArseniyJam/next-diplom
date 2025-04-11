@@ -72,7 +72,7 @@ export async function getProducts(
    });
    const url = new URL("/api/products", baseURL);
    url.search = query;
-   console.log(url);
+
    return await fetchData(url.href);
 }
 

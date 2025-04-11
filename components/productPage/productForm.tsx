@@ -24,7 +24,7 @@ function ProductForm({ prod }: { prod: OneProductInterface }) {
          <input
             type="hidden"
             name="price"
-            value={prod.price * (1 - (prod.sale as number) / 100)}
+            value={Math.round(prod.price * (1 - (prod.sale as number) / 100))}
          />
 
          <div className={`divider my-5`}></div>
