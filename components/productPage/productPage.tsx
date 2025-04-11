@@ -18,7 +18,6 @@ function ProductPage({
    prod: OneProductInterface;
    recommendedProducts: ProdCardInterface[];
 }) {
-   const backendURL = getStrapiURL();
    const [activeUrl, setActiveUrl] = useState(
       getStrapiMedia(prod.images[0].url),
    );
