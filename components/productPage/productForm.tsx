@@ -2,7 +2,7 @@ import React, { useActionState, useState } from "react";
 import { Check, Minus, Plus } from "lucide-react";
 import { OneProductInterface } from "@/lib/interfaces";
 import { cartForm } from "@/data/cart";
-import { getStrapiURL } from "@/lib/utils";
+import { getStrapiMedia } from "@/lib/utils";
 
 function ProductForm({ prod }: { prod: OneProductInterface }) {
    const [prodCount, setProdCount] = useState(1);
@@ -17,7 +17,7 @@ function ProductForm({ prod }: { prod: OneProductInterface }) {
          <input
             type="hidden"
             name="image"
-            value={getStrapiURL() + prod.images[0].url}
+            value={getStrapiMedia(prod.images[0].url)}
          />
          <input type="hidden" name="title" value={prod.title} />
          <input type="hidden" name="count" value={prodCount} />

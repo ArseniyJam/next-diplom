@@ -4,13 +4,15 @@ import { ProdCartInterface } from "@/lib/interfaces";
 import Image from "next/image";
 import { Minus, Plus, TrashIcon } from "lucide-react";
 import { changeCartItemCount, deleteCartItem } from "@/data/cart";
+import { getStrapiMedia } from "@/lib/utils";
 
 function CartItem({ product }: { product: ProdCartInterface }) {
+   console.log(product);
    return (
       <div className={`flex gap-3 `}>
          <div>
             <Image
-               src={product.image}
+               src={getStrapiMedia(product.image)}
                alt={product.title}
                width={100}
                height={100}
