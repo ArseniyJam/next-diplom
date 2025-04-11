@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
          },
          {
             protocol: "https",
-            hostname: "steadfast-advice-cc43d47f25.strapiapp.com",
+            hostname: "steadfast-advice-cc43d47f25.media.strapiapp.com",
          },
       ],
    },

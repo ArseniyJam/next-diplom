@@ -46,18 +46,6 @@ export async function getProducts(
 
    const PAGE_SIZE = 2;
    const query = qs.stringify({
-      fields: [
-         "rating",
-         "price",
-         "title",
-         "sale",
-         "color",
-         "size",
-         "style",
-         "type",
-         "updatedAt",
-         "createdAt",
-      ],
       populate: {
          images: {
             fields: ["url"],
@@ -84,6 +72,7 @@ export async function getProducts(
    });
    const url = new URL("/api/products", baseURL);
    url.search = query;
+   console.log(url);
    return await fetchData(url.href);
 }
 

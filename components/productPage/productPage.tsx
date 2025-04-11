@@ -8,7 +8,7 @@ import ProductForm from "@/components/productPage/productForm";
 import ProductsPreview from "@/components/productsPreview";
 
 import ProductInfo from "@/components/productPage/productInfo";
-import { getStrapiURL } from "@/lib/utils";
+import { getStrapiMedia, getStrapiURL } from "@/lib/utils";
 import { useState } from "react";
 
 function ProductPage({
@@ -19,7 +19,9 @@ function ProductPage({
    recommendedProducts: ProdCardInterface[];
 }) {
    const backendURL = getStrapiURL();
-   const [activeUrl, setActiveUrl] = useState(prod.images[0].url);
+   const [activeUrl, setActiveUrl] = useState(
+      getStrapiMedia(prod.images[0].url),
+   );
 
    const chooseActiveUrl = (url: string) => {
       setActiveUrl(url);
@@ -33,7 +35,7 @@ function ProductPage({
             <div className={`flex flex-col items-center gap-3 lg:flex-row`}>
                <div className={`lg:order-1 `}>
                   <Image
-                     src={backendURL + activeUrl}
+                     src={activeUrl}
                      alt={"active image"}
                      width={358}
                      height={290}

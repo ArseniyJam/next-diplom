@@ -4,7 +4,7 @@ import Image from "next/image";
 import RatingStars from "@/components/ratingStars";
 import Price from "@/components/price";
 import Link from "next/link";
-import { getStrapiURL } from "@/lib/utils";
+import { getStrapiMedia } from "@/lib/utils";
 
 function ProdCard({
    images,
@@ -22,7 +22,7 @@ function ProdCard({
       >
          {images && (
             <Image
-               src={getStrapiURL() + images[0].url}
+               src={getStrapiMedia(images[0].url)}
                alt={title}
                width={160}
                height={165}

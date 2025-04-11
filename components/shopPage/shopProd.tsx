@@ -40,7 +40,7 @@ function ShopProd({
                   )}
                </div>
                <div className={`divider`}></div>
-               <ShopPagination pageCount={data.meta.pagination.pageCount} />
+               <ShopPagination pageCount={data?.meta?.pagination?.pageCount} />
             </div>
          </div>
       </div>

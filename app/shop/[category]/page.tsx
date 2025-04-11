@@ -16,7 +16,7 @@ async function Page({
    const { category } = await params;
    const search = await searchParams;
    const data = await getProducts(search, category);
-
+   console.log(data);
    return (
       <div>
          <ShopProd category={category} data={data} />
