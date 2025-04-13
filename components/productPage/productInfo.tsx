@@ -93,9 +93,18 @@ function ProductInfo({
    const handleClick = () => {
       setPageSize(pageSize + addToPage);
       setLoading(true);
-      commentsRef?.current?.scrollIntoView({
-         behavior: "smooth",
-      });
+      setTimeout(() => {
+         commentsRef?.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+         });
+      }, 700);
+
+      console.log(
+         setTimeout(() => {
+            console.log(commentsRef.current?.clientHeight);
+         }, 0),
+      );
    };
 
    const [user, setUser] = useState<UserInterface>({
@@ -106,7 +115,6 @@ function ProductInfo({
    useEffect(() => {
       getMe().then((res) => {
          setUser(res);
-         console.log(res);
       });
    }, []);
 
@@ -151,21 +159,21 @@ function ProductInfo({
                      data.map((comment: CommentInterface, index) => (
                         <Comment data={comment} key={index} showDate={true} />
                      ))}
-               </div>
-               <div className={`flex justify-center mt-6`}>
-                  <button
-                     className={`btn-outlined  !px-6 flex gap-1 items-center w-[216px] justify-center ${pageSize >= total ? "opacity-50 pointer-events-none" : ""}`}
-                     onClick={handleClick}
-                  >
-                     {loading && (
-                        <Loader2
-                           className={`animate-spin`}
-                           width={20}
-                           height={20}
-                        />
-                     )}
-                     Load More Reviews
-                  </button>
+                  <div className={`flex justify-center mt-6`}>
+                     <button
+                        className={`btn-outlined  !px-6 flex gap-1 items-center w-[216px] justify-center ${pageSize >= total ? "opacity-50 pointer-events-none" : ""}`}
+                        onClick={handleClick}
+                     >
+                        {loading && (
+                           <Loader2
+                              className={`animate-spin`}
+                              width={20}
+                              height={20}
+                           />
+                        )}
+                        Load More Reviews
+                     </button>
+                  </div>
                </div>
             </TabsContent>
          </Tabs>

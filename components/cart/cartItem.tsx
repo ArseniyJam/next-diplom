@@ -7,7 +7,6 @@ import { changeCartItemCount, deleteCartItem } from "@/data/cart";
 import { getStrapiMedia } from "@/lib/utils";
 
 function CartItem({ product }: { product: ProdCartInterface }) {
-   console.log(product);
    return (
       <div className={`flex gap-3 `}>
          <div>
