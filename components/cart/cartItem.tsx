@@ -4,7 +4,7 @@ import { ProdCartInterface } from "@/lib/interfaces";
 import Image from "next/image";
 import { Minus, Plus, TrashIcon } from "lucide-react";
 import { changeCartItemCount, deleteCartItem } from "@/data/cart";
-import { getStrapiMedia, getStrapiURL } from "@/lib/utils";
+import { getStrapiMedia } from "@/lib/utils";
 import Link from "next/link";
 
 function CartItem({ product }: { product: ProdCartInterface }) {
