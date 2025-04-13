@@ -21,12 +21,13 @@ function ProductForm({ prod }: { prod: OneProductInterface }) {
          />
          <input type="hidden" name="title" value={prod.title} />
          <input type="hidden" name="count" value={prodCount} />
+         <input type="hidden" name="style" value={prod.style} />
+         <input type="hidden" name="documentId" value={prod.documentId} />
          <input
             type="hidden"
             name="price"
             value={Math.round(prod.price * (1 - (prod.sale as number) / 100))}
          />
-
          <div className={`divider my-5`}></div>
          <div className={`flex gap-2 lg:gap-4`}>
             {prod.color.map((color, index) => (

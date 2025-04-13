@@ -45,6 +45,8 @@ export interface ProdCartInterface {
    color: string;
    size: string;
    price: string;
+   style?: string;
+   documentId?: string;
 }
 
 //Backend

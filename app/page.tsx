@@ -6,9 +6,10 @@ import { getSortedProducts } from "@/data/products";
 import { getTopComments } from "@/data/comment";
 
 async function Page() {
-   const arrivals = await getSortedProducts("createdAt");
-   const rated = await getSortedProducts("rating");
-   const carouselComments = await getTopComments();
+   const [arrivals, rated] = await Promise.all([
+      getSortedProducts("createdAt"),
+      getSortedProducts("rating"),
+   ]);
 
    return (
       <div className={``}>
@@ -17,7 +18,7 @@ async function Page() {
          <div className={`divider`}></div>
          <ProductsPreview header={`TOP RATED`} data={rated.data} />
          <Categories />
-         <CarouselComments comments={carouselComments.data} />
+         <CarouselComments />
       </div>
    );
 }

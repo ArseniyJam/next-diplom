@@ -11,19 +11,19 @@ function Categories() {
    ];
    const images: { title: string; url: string }[] = [
       {
-         title: "casual",
+         title: "Casual",
          url: imagesUrls[0],
       },
       {
-         title: "formal",
+         title: "Formal",
          url: imagesUrls[1],
       },
       {
-         title: "party",
+         title: "Party",
          url: imagesUrls[2],
       },
       {
-         title: "gym",
+         title: "Gym",
          url: imagesUrls[3],
       },
    ];

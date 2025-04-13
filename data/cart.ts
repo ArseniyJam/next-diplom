@@ -14,6 +14,8 @@ export async function cartForm(prevState: any, formData: FormData) {
       count: formData.get("count") as string,
       image: formData.get("image") as string,
       price: formData.get("price") as string,
+      style: formData.get("style") as string,
+      documentId: formData.get("documentId") as string,
    };
 
    if (cart?.length > 0) {

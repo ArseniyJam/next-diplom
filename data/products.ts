@@ -20,8 +20,6 @@ export function getFilteredSearchURL(prevState: any, formData: FormData) {
       }
    }
 
-   //фильтрацию делать через ссылку
-
    return { ...prevState, data: searchStr.slice(0, -1) };
 }
 

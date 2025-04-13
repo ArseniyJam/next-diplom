@@ -58,15 +58,25 @@ function Hero() {
                      alt={"a"}
                      className={` xl:w-[40vw] 2xl:max-w-[1100px] xl:h-[calc(100vh-246px)]`}
                   />
-                  <div
-                     className={`absolute h-[76px] lg:h-[104px] aspect-square right-1 top-10`}
-                  >
-                     <img src="/hero/blackStar.png" alt="star" />
+                  <div className={`absolute aspect-square right-1 top-10`}>
+                     <Image
+                        width={76}
+                        height={76}
+                        src="/hero/blackStar.png"
+                        alt="star"
+                        className={`lg:w-[104px] lg:h-[104px] `}
+                     />
                   </div>
                   <div
-                     className={`absolute h-[44px] lg:h-[56px] aspect-square left-2 top-32 lg:top-44 xl:top-64`}
+                     className={`absolute aspect-square left-2 top-32 lg:top-44 xl:top-64`}
                   >
-                     <img src="/hero/blackStar.png" alt="" />
+                     <Image
+                        width={44}
+                        height={44}
+                        src="/hero/blackStar.png"
+                        alt="star"
+                        className={`lg:h-[56px] lg:w-[56px] `}
+                     />
                   </div>
                </div>
             </div>

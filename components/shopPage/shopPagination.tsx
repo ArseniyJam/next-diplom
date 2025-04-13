@@ -50,7 +50,7 @@ export function ShopPagination({ pageCount }: { pageCount: number }) {
             </PaginationItem>
             <PaginationItem>
                <PaginationLink href={createUrl(pageCount)}>
-                  {pageCount}
+                  {pageCount || 1}
                </PaginationLink>
             </PaginationItem>
 

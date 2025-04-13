@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { CommentInterface } from "@/lib/interfaces";
 import {
    Carousel,
@@ -8,8 +9,15 @@ import {
    CarouselPrevious,
 } from "@/components/ui/carousel";
 import Comment from "@/components/comment";
+import { getTopComments } from "@/data/comment";
 
-function CarouselComments({ comments }: { comments: CommentInterface[] }) {
+function CarouselComments() {
+   const [comments, setComments] = useState<CommentInterface[]>([]);
+   useEffect(() => {
+      getTopComments().then((res) => {
+         setComments(res.data);
+      });
+   }, []);
    return (
       <div className={`pt-12  flex flex-col gap-4`}>
          <h3>OUR HAPPY CUSTOMERS</h3>
