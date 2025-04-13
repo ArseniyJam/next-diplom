@@ -99,14 +99,7 @@ function ProductInfo({
             block: "end",
          });
       }, 700);
-
-      console.log(
-         setTimeout(() => {
-            console.log(commentsRef.current?.clientHeight);
-         }, 0),
-      );
    };
-
    const [user, setUser] = useState<UserInterface>({
       ok: false,
       data: null,
@@ -159,7 +152,7 @@ function ProductInfo({
                      data.map((comment: CommentInterface, index) => (
                         <Comment data={comment} key={index} showDate={true} />
                      ))}
-                  <div className={`flex justify-center mt-6`}>
+                  <div className={`flex justify-center mt-6 lg:col-span-3`}>
                      <button
                         className={`btn-outlined  !px-6 flex gap-1 items-center w-[216px] justify-center ${pageSize >= total ? "opacity-50 pointer-events-none" : ""}`}
                         onClick={handleClick}
