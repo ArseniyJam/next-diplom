@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/header/header";
+
 import Footer from "@/components/footer/footer";
 import React from "react";
-import { getMe } from "@/services/get-me";
-import { getCartLength } from "@/data/cart";
+
 import Link from "next/link";
 
 export const metadata: Metadata = {
