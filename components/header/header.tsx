@@ -10,15 +10,15 @@ import {
 import HeaderNavbar from "@/components/header/headerNavbar";
 import HeaderMobileNavbar from "@/components/header/headerMobileNavbar";
 import { useEffect, useState } from "react";
-import { ProdCartInterface, UserInterface } from "@/lib/interfaces";
+import { UserInterface } from "@/lib/interfaces";
 import { logoutAction } from "@/data/auth";
 import HeaderSearch from "@/components/header/search";
 
 function Header({
-   cart,
+   cartLength,
    user,
 }: {
-   cart: ProdCartInterface[] | [];
+   cartLength: number;
    user: UserInterface;
 }) {
    const [openMenu, setOpenMenu] = useState(false);
@@ -33,6 +33,7 @@ function Header({
          document.body.classList.remove("overflow-hidden");
       }
    }, [openMenu]);
+
    return (
       <header className={`-mx-4 xl:-mx-[100px] sticky top-0 bg-white z-50`}>
          <div
@@ -92,11 +93,11 @@ function Header({
                   <Search />
                </button>
                <Link href={`/cart`} className={`relative`}>
-                  {cart.length > 0 && (
+                  {cartLength > 0 && (
                      <span
                         className={`absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 grid place-items-center text-xs`}
                      >
-                        {cart.length}
+                        {cartLength}
                      </span>
                   )}
                   <ShoppingCart />

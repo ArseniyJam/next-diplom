@@ -4,6 +4,8 @@ import Categories from "@/components/homePage/categories";
 import CarouselComments from "@/components/homePage/carouselComments";
 import { getSortedProducts } from "@/data/products";
 
+export const revalidate = 240;
+
 async function Page() {
    const [arrivals, rated] = await Promise.all([
       getSortedProducts("createdAt"),

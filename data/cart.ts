@@ -93,3 +93,8 @@ export async function changeCartItemCount(
       cookieStore.set("cart", JSON.stringify(cart));
    }
 }
+
+export async function getCartLength() {
+   const cart = await getCart();
+   return cart.length;
+}
