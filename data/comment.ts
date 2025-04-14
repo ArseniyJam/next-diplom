@@ -46,7 +46,7 @@ export async function getTopComments() {
    });
    const url = new URL("/api/comments", baseURL);
    url.search = query;
-   return await fetchData(url.href);
+   return await fetchData(url.href, { next: { revalidate: 240 } });
 }
 
 export async function getComments(
