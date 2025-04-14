@@ -97,7 +97,7 @@ export async function getSortedProducts(
    });
    const url = new URL("/api/products", baseURL);
    url.search = query;
-   return await fetchData(url.href);
+   return await fetchData(url.href, { next: { revalidate: 240 } });
 }
 
 export async function getProductById(id: string) {
@@ -111,5 +111,5 @@ export async function getProductById(id: string) {
    });
    const url = new URL(`/api/products/${id}`, baseURL);
    url.search = query;
-   return await fetchData(url.href);
+   return await fetchData(url.href, { next: { revalidate: 120 } });
 }

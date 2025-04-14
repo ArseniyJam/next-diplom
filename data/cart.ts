@@ -20,22 +20,16 @@ export async function cartForm(prevState: any, formData: FormData) {
 
    if (cart?.length > 0) {
       // Проверка на уже добавленный товар в корзину
-      if (
-         cart.findIndex(
-            (obj) =>
-               obj.title == prod.title &&
-               obj.size == prod.size &&
-               obj.color == prod.color,
-         ) !== -1
-      ) {
-         cart[
-            cart.findIndex(
-               (obj) =>
-                  obj.title == prod.title &&
-                  obj.size == prod.size &&
-                  obj.color == prod.color,
-            )
-         ].count = prod.count;
+      const duplicateIndex = cart.findIndex(
+         (obj) =>
+            obj.title == prod.title &&
+            obj.size == prod.size &&
+            obj.color == prod.color,
+      );
+      if (duplicateIndex !== -1) {
+         cart[duplicateIndex].count =
+            +cart[duplicateIndex].count + +prod.count + "";
+
          cookieStore.set("cart", JSON.stringify(cart));
          return { ...prevState, data: prod };
       }
