@@ -10,8 +10,8 @@ const categories = [
    "/shop/Gym",
 ];
 
+const user = await getMe();
 export async function middleware(request: NextRequest) {
-   const user = await getMe();
    const currentPath = request.nextUrl.pathname;
 
    if (user.ok && authRoutes.includes(currentPath)) {

@@ -6,9 +6,9 @@ function HeaderNavbar() {
    return (
       <div className={`hidden lg:flex gap-6 shrink-0`}>
          <HeaderShopMenu />
-         <Link href="/public">On Sale</Link>
-         <Link href="/public">New Arrivals</Link>
-         <Link href="/public">Brands</Link>
+         <Link href="/">On Sale</Link>
+         <Link href="/">New Arrivals</Link>
+         <Link href="/">Brands</Link>
       </div>
    );
 }

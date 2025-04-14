@@ -12,9 +12,9 @@ function HeaderMobileNavbar({ closeMenu }: { closeMenu: () => void }) {
                className={`flex flex-col gap-10 items-center text-2xl justify-center`}
             >
                <HeaderMobileShopMenu closeMenu={closeMenu} />
-               <Link href="/public">On Sale</Link>
-               <Link href="/public">New Arrivals</Link>
-               <Link href="/public">Brands</Link>
+               <Link href="/">On Sale</Link>
+               <Link href="/">New Arrivals</Link>
+               <Link href="/">Brands</Link>
             </div>
          </div>
          <button
