@@ -44,6 +44,7 @@ function Header({
                   <span>
                      Sign up and get 20% off to your first order.{" "}
                      <Link
+                        prefetch={false}
                         href={"/auth/register"}
                         className={`underline font-medium !text-sm`}
                      >
@@ -55,6 +56,7 @@ function Header({
                   <span>
                      Get 20% off to your first order.{" "}
                      <Link
+                        prefetch={false}
                         href={"/cart"}
                         className={`underline font-medium !text-sm`}
                      >
@@ -92,7 +94,7 @@ function Header({
                >
                   <Search />
                </button>
-               <Link href={`/cart`} className={`relative`}>
+               <Link prefetch={false} href={`/cart`} className={`relative`}>
                   {cartLength > 0 && (
                      <span
                         className={`absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 grid place-items-center text-xs`}
@@ -103,7 +105,7 @@ function Header({
                   <ShoppingCart />
                </Link>
                {!user.ok && (
-                  <Link href={`/auth/register`}>
+                  <Link prefetch={false} href={`/auth/register`}>
                      <UserCircle2 />
                   </Link>
                )}

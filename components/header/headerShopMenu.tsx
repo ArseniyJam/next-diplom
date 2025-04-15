@@ -45,6 +45,7 @@ function HeaderShopMenu() {
             >
                {categories.map((item, i) => (
                   <Link
+                     prefetch={false}
                      href={`/shop/${item}`}
                      className={`hover:bg-dark/5 p-2 rounded`}
                      onClick={() => setOpened(!opened)}

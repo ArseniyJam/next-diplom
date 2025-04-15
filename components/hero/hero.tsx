@@ -7,7 +7,7 @@ function Hero() {
    return (
       <div className={``}>
          <div
-            className={`bg-gray -mx-4  xl:-mx-[100px] xl:px-[100px] px-4 pt-10 lg:pt-0`}
+            className={`bg-gray -mx-4  xl:-mx-[100px] xl:px-[100px] px-4 pt-4 lg:pt-0`}
          >
             <div
                className={`flex flex-col lg:flex-row lg:gap-10 2xl:gap-32 lg:items-center lg:justify-center `}
