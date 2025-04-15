@@ -17,6 +17,7 @@ function ProdCard({
 }: ProdCardInterface) {
    return (
       <Link
+         prefetch={false}
          href={`/shop/${style}/${documentId}`}
          className={`flex flex-col gap-1 lg:gap-2 shrink-0 `}
       >
