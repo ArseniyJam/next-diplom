@@ -41,7 +41,11 @@ function Categories() {
                   key={i}
                   className={`cat-img shrink-0 w-[310px] h-[190px] lg:h-[290px] lg:w-[405px]`}
                >
-                  <Link href={`/shop/${image.title}`} className={`relative `}>
+                  <Link
+                     prefetch={false}
+                     href={`/shop/${image.title}`}
+                     className={`relative `}
+                  >
                      <Image
                         src={image.url}
                         alt={`Casual`}

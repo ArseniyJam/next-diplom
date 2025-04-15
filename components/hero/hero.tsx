@@ -21,7 +21,11 @@ function Hero() {
                      garments, designed to bring out your individuality and
                      cater to your sense of style.
                   </p>
-                  <Link href={"/shop/all"} className={`btn lg:self-start`}>
+                  <Link
+                     prefetch={false}
+                     href={"/shop/all"}
+                     className={`btn lg:self-start`}
+                  >
                      Shop Now
                   </Link>
                   <div
