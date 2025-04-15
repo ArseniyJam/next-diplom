@@ -32,7 +32,7 @@ function HeaderSearch({ searchActive }: { searchActive: boolean }) {
                      event.key !== "Backspace"
                   ) {
                      console.log("working");
-                     router.push(`/shop/all`);
+                     router.replace(`/shop/all`);
                   }
                }}
                type="text"
