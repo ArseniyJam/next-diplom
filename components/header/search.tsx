@@ -2,28 +2,31 @@
 import { Search } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import { ChangeEvent } from "react";
+import React from "react";
 
 function HeaderSearch({ searchActive }: { searchActive: boolean }) {
    const searchParams = useSearchParams();
    const pathname = usePathname();
    const router = useRouter();
 
-   const handleChange = useDebouncedCallback((event: KeyboardEvent) => {
-      const inputValue = (event.target as HTMLInputElement).value;
-      const params = new URLSearchParams(searchParams);
-      if (!inputValue) {
-         params.delete("search");
-      } else {
-         params.set("search", inputValue);
-      }
-      params.set("page", "1");
-      if (!pathname.startsWith("/shop") && event.key !== "Backspace") {
-         router.replace(`/shop/All?${params.toString()}`);
-      } else {
-         router.replace(`${pathname}?${params.toString()}`);
-      }
-   }, 300);
+   const handleChange = useDebouncedCallback(
+      (event: React.KeyboardEvent<HTMLInputElement>) => {
+         const inputValue = (event.target as HTMLInputElement).value;
+         const params = new URLSearchParams(searchParams);
+         if (!inputValue) {
+            params.delete("search");
+         } else {
+            params.set("search", inputValue);
+         }
+         params.set("page", "1");
+         if (!pathname.startsWith("/shop") && event.key !== "Backspace") {
+            router.replace(`/shop/All?${params.toString()}`);
+         } else {
+            router.replace(`${pathname}?${params.toString()}`);
+         }
+      },
+      300,
+   );
 
    return (
       <div
