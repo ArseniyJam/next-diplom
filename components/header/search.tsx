@@ -21,9 +21,6 @@ function HeaderSearch({ searchActive }: { searchActive: boolean }) {
       router.replace(`${pathname}?${params.toString()}`);
    }, 300);
 
-   useEffect(() => {
-      console.log("Mounted on client");
-   }, []);
    return (
       <div
          className={`lg:block top-28 lg:top-0 lg:mx-0 left-1/2 -translate-x-1/2 lg:left-0 lg:-translate-x-0 max-w-4xl w-[80vw] lg:w-full ${searchActive ? "absolute" : "hidden"}`}
@@ -31,12 +28,12 @@ function HeaderSearch({ searchActive }: { searchActive: boolean }) {
          <div className={`lg:relative`}>
             <input
                onKeyDown={(event) => {
-                  console.log(event.key);
                   if (
                      !pathname.startsWith("/shop") &&
                      event.key !== "Backspace"
                   ) {
-                     router.push(`/shop/all?${searchParams.toString()}`);
+                     console.log("working");
+                     router.push(`/shop/all`);
                   }
                }}
                type="text"
