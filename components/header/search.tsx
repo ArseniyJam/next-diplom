@@ -2,13 +2,15 @@
 import { Search } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import { ChangeEvent } from "react";
 
 function HeaderSearch({ searchActive }: { searchActive: boolean }) {
    const searchParams = useSearchParams();
    const pathname = usePathname();
    const router = useRouter();
 
-   const handleChange = useDebouncedCallback((inputValue: string) => {
+   const handleChange = useDebouncedCallback((event: KeyboardEvent) => {
+      const inputValue = (event.target as HTMLInputElement).value;
       const params = new URLSearchParams(searchParams);
       if (!inputValue) {
          params.delete("search");
@@ -16,8 +18,11 @@ function HeaderSearch({ searchActive }: { searchActive: boolean }) {
          params.set("search", inputValue);
       }
       params.set("page", "1");
-
-      router.replace(`${pathname}?${params.toString()}`);
+      if (!pathname.startsWith("/shop") && event.key !== "Backspace") {
+         router.replace(`/shop/All?${params.toString()}`);
+      } else {
+         router.replace(`${pathname}?${params.toString()}`);
+      }
    }, 300);
 
    return (
@@ -26,17 +31,8 @@ function HeaderSearch({ searchActive }: { searchActive: boolean }) {
       >
          <div className={`lg:relative`}>
             <input
-               onKeyDown={(event) => {
-                  if (
-                     !pathname.startsWith("/shop") &&
-                     event.key !== "Backspace"
-                  ) {
-                     console.log("working");
-                     router.replace(`/shop/all`);
-                  }
-               }}
                type="text"
-               onChange={(event) => handleChange(event.target.value)}
+               onKeyDown={(event) => handleChange(event)}
                defaultValue={searchParams.get("search") ?? ""}
                placeholder={`Search for products...`}
                className={`rounded-[62px] bg-gray grow px-4 py-3 ps-[52px] outline outline-mutedGray shadow-md lg:shadow-none lg:border-none w-full focus:outline-2 `}
