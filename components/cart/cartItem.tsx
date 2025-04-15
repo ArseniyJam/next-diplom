@@ -10,7 +10,10 @@ import Link from "next/link";
 function CartItem({ product }: { product: ProdCartInterface }) {
    return (
       <div className={`flex gap-3 `}>
-         <Link href={`/shop/${product.style}/${product.documentId}`}>
+         <Link
+            prefetch={false}
+            href={`/shop/${product.style}/${product.documentId}`}
+         >
             <Image
                src={getStrapiMedia(product.image)}
                alt={product.title}

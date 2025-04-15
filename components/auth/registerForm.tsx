@@ -52,7 +52,11 @@ function RegisterForm() {
                   <SubmitButton text={"Sign Up"} />
                   <StrapiErrors error={state?.strapiErrors} />
                </form>
-               <Link href={"/auth/login"} className={`self-center underline`}>
+               <Link
+                  prefetch={false}
+                  href={"/auth/login"}
+                  className={`self-center underline`}
+               >
                   I already have an account
                </Link>
             </CardContent>
