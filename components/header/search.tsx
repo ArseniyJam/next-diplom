@@ -2,7 +2,6 @@
 import { Search } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import { useEffect } from "react";
 
 function HeaderSearch({ searchActive }: { searchActive: boolean }) {
    const searchParams = useSearchParams();
